@@ -1,0 +1,1 @@
+// Handle user authentication and profile logic
