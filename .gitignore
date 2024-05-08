@@ -49,10 +49,6 @@ Thumbs.db
 .nuxt
 dist
 
-# Gatsby files
-.cache/
-public
-
 # Vue CLI 3.x build output
 dist/
 
