@@ -1,1 +1,0 @@
-// Sequelize configuration to handle different environments
