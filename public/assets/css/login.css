@@ -4,9 +4,16 @@
     box-sizing: border-box;
     font-family:Arial, Helvetica, sans-serif;
 }
+html {
+    background-image: linear-gradient(rgba(131, 88, 248, 0.5), rgba(30, 0, 128, 0.5)), url(../img/background-login.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
 
 body {
-    background-color: #6741d9;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -163,7 +170,7 @@ body {
 }
 
 .toggle {
-    background-color: rgb(30, 21, 48);
+    background-color:#6741d9;
     height: 100%;
     color: white;
     position: relative;
