@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const { Game } = require('../../models');
 const isAuth = require('../../config/middleware/auth'); 
+const adminUser = require('../../config/middleware/adminAuthorization');
 
 // POST route to add a new game
-router.post('/', isAuth, async (req, res) => {
+router.post('/', isAuth, adminUser(["admin"]), async (req, res) => {
     try {
         const newGame = await Game.create(req.body);
         res.status(201).json(newGame);
@@ -15,7 +16,7 @@ router.post('/', isAuth, async (req, res) => {
 });
 
 // PUT route to update an existing game
-router.put('/:id', isAuth, async (req, res) => {
+router.put('/:id', isAuth, adminUser(["admin"]), async (req, res) => {
     try {
         const updatedGame = await Game.update(req.body, {
             where: { id: req.params.id }
@@ -32,7 +33,7 @@ router.put('/:id', isAuth, async (req, res) => {
 });
 
 // DELETE route to delete a game
-router.delete('/:id', isAuth, async (req, res) => {
+router.delete('/:id', isAuth,  adminUser(["admin"]), async (req, res) => {
     try {
         const result = await Game.destroy({
             where: { id: req.params.id }
