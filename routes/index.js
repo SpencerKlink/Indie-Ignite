@@ -2,11 +2,13 @@
 const express = require('express');
 const router = express.Router();
 
+const htmlRoutes = require('./htmlRoutes'); 
 const userRoutes = require('./api/users');
 const gameRoutes = require('./api/games');
 const reviewRoutes = require('./api/reviews');
 
 // Use the specific routers
+router.use('/', htmlRoutes);  
 router.use('/users', userRoutes);
 router.use('/games', gameRoutes);
 router.use('/reviews', reviewRoutes);

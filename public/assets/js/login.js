@@ -16,7 +16,6 @@ const signupInput = document.getElementById("password-signup")
 const showPassword = document.querySelector(".password-toggle-icon i");
 const showSignUp = document.querySelector(".sign-up-toggle-icon i");
 
-
 showPassword.addEventListener("click", function () {
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
@@ -39,8 +38,6 @@ showSignUp.addEventListener("click", function () {
       showSignUp.classList.add("fa-eye");
     }
   });
-
-
 
 const loginFormHandler = async (event) => {
 
