@@ -9,6 +9,7 @@ router.post('/signup', async (req, res) => {
         const newUser = await User.create({
             username: req.body.username,
             email: req.body.email,
+            userRole : req.body.userRole,
             password: await bcrypt.hash(req.body.password, 10)
         });
 
@@ -49,6 +50,7 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             req.session.userId = user.id;
             req.session.username = user.username;
+            req.session.userRole = user.userRole;
             req.session.loggedIn = true;
 
             res.json({ user: user, message: 'You are now logged in!' });
