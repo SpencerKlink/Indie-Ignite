@@ -10,39 +10,9 @@ loginBtn.addEventListener('click', () => {
     container.classList.remove("active");
 });
 
-const passwordInput = document.getElementById("password-login");
-const signupInput = document.getElementById("password-signup")
-const showPassword = document.querySelector(".password-toggle-icon i");
-const showSignUp = document.querySelector(".sign-up-toggle-icon i");
-
-
-showPassword.addEventListener("click", function () {
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-    showPassword.classList.remove("fa-eye");
-    showPassword.classList.add("fa-eye-slash");
-  } else {
-    passwordInput.type = "password";
-    showPassword.classList.remove("fa-eye-slash");
-    showPassword.classList.add("fa-eye");
-  }
-});
-showSignUp.addEventListener("click", function () {
-    if (signupInput.type === "password") {
-      signupInput.type = "text";
-      showSignUp.classList.remove("fa-eye");
-      showSignUp.classList.add("fa-eye-slash");
-    } else {
-      signupInput.type = "password";
-      showSignUp.classList.remove("fa-eye-slash");
-      showSignUp.classList.add("fa-eye");
-    }
-  });
-
 const loginFormHandler = async (event) => {
 
     event.preventDefault();
-
 
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
