@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Game } = require('../../models');
 const isAuth = require('../../config/middleware/auth'); 
-const adminUser = require('../../config/middleware/adminAuthorization');
+const {adminUser} = require('../../config/middleware/adminAuthorization');
 
 // POST route to add a new game
 router.post('/', isAuth, adminUser(["admin"]), async (req, res) => {
