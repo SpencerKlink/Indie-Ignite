@@ -1,7 +1,8 @@
-// Sequelize configuration to handle different environments
+const Sequelize = require('sequelize');
 require('dotenv').config();
 
-module.exports = {
+const env = process.env.NODE_ENV || 'development'; 
+const config = {
     development: {
         username: process.env.DB_USER,
         password: process.env.DB_PASS,
@@ -17,12 +18,14 @@ module.exports = {
         dialect: 'mysql'
     },
     production: {
-        username: "root",
-        password: null, 
-        database: "database_production",
+        username: process.env.DB_USER || "root",
+        password: process.env.DB_PASS, 
+        database: process.env.DB_NAME || "database_production",
+        host: process.env.DB_HOST || "localhost",
         dialect: 'mysql'
     }
-};
+}[env];
 
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
-
+module.exports = sequelize;
