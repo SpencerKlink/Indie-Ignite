@@ -2,8 +2,6 @@ const Game = require('./Game');
 const User = require('./User');
 const Review = require('./Review');
 
-// Define associations
-
 User.hasMany(Game, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
