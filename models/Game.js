@@ -4,7 +4,6 @@ const sequelize = require('../config/config');
 
 class Game extends Model {}
 
-
 Game.init(
     {
         id: {
