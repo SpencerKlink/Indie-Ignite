@@ -3,7 +3,7 @@ const router = express.Router();
 const { User } = require('../../models'); 
 const bcrypt = require('bcrypt');
 
-// POST route for user registration (signup)
+// POST route for user signup
 router.post('/signup', async (req, res) => {
     try {
         const newUser = await User.create({
@@ -12,7 +12,6 @@ router.post('/signup', async (req, res) => {
             password: await bcrypt.hash(req.body.password, 10)
         });
 
-        // Setting up user session upon signup
         req.session.save(() => {
             req.session.userId = newUser.id;
             req.session.username = newUser.username;
