@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const publicGameRoutes = require('./publicGameRoutespublicGameRoutes');  
-const adminGameRoutes = require('./adminGameRoutesadminGameRoutes');  
+const publicGameRoutes = require('./spublicGameRoutes');  
+const adminGameRoutes = require('./adminGameRoutes');  
 router.use('/public', publicGameRoutes);
 router.use('/admin', adminGameRoutes);
 
