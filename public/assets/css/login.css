@@ -5,7 +5,7 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 html {
-    background-image: linear-gradient(rgba(131, 88, 248, 0.5), rgba(30, 0, 128, 0.5)), url(../img/background-login.jpg);
+    background-image: linear-gradient(rgba(131, 88, 248, 0.5), rgba(30, 0, 128, 0.5)), url(../Indie-Ignite/public/assets/images/background-login.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -158,14 +158,14 @@ body {
     height: 100%;
     overflow: hidden;
     transition: all 0.5s ease-in-out;
-    border-radius: 150px 0 0 100px;
+    border-radius: 100px 0 0 20px;
     z-index: 1000;
 }
 
 
 .container.active .toggle-container{
     transform: translateX(-100%);
-    border-radius: 0 150px 100px 0;
+    border-radius: 0 100px 20px 0;
 
 }
 
@@ -218,4 +218,8 @@ body {
 
 .container.active .toggle-right {
     transform: translateX(200%);
+}
+
+h1{
+    padding-bottom:50px
 }
