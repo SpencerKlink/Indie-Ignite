@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const withAuth = require('../config/middleware/auth')
+// const isAuth = require('../config/middleware/auth')
 
-router.get('/', withAuth, (req, res) => {
+router.get('/', (req, res) => {
     res.render('home'), { layout: false };  
 });
 
@@ -10,7 +10,7 @@ router.get('/login', (req, res) => {
     res.render('login', { layout: false });  
 });
 
-router.get('*', withAuth, (req, res) => {
+router.get('*', (req, res) => {
     res.render('home'), { layout: false };  
 });
 
