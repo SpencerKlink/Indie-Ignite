@@ -1,1 +1,21 @@
-User profile template
+<link rel="stylesheet" href="/assets/css/profile.css">
+
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-image">
+            <img src="{{profileImageUrl}}" alt="Profile Image of {{userName}}">
+        </div>
+        <div class="profile-info">
+            <h1>{{userName}}</h1>
+            <p>{{userDescription}}</p>
+        </div>
+    </div>
+    <div class="profile-creations">
+        <h2>Creations</h2>
+        <ul>
+            {{#each creations}}
+            <li><a href="/game/{{this.id}}">{{this.title}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
