@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "name": "Action"
+    },
+    {
+        "id": 2,
+        "name": "Adventure"
+    },
+    {
+        "id": 3,
+        "name": "Strategy"
+    },
+    {
+        "id": 4,
+        "name": "RPG"
+    },
+    {
+        "id": 5,
+        "name": "Simulation"
+    },
+    {
+        "id": 6,
+        "name": "Sports"
+    },
+    {
+        "id": 7,
+        "name": "Puzzle"
+    },
+    {
+        "id": 8,
+        "name": "Idle"
+    }
+]
