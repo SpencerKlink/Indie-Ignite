@@ -1,6 +1,4 @@
 
-
-
 //admin function 
 const adminUser = (permissions) => {
     
@@ -16,4 +14,4 @@ const adminUser = (permissions) => {
     }
 }
 
-module.exports = {adminUser};
+module.exports =  {adminUser};
