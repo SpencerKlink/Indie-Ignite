@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Game } = require('../../models');
 const isAuth = require('../../config/middleware/auth'); 
-const {adminUser} = require('../../config/middleware/adminAuthorization');
+const { adminUser } = require('../../config/middleware/adminAuthorization');
 
 // POST route to add a new game
 router.post('/', isAuth, adminUser(["admin"]), async (req, res) => {
@@ -20,7 +20,7 @@ router.put('/:id', isAuth, adminUser(["admin"]), async (req, res) => {
     try {
         const updatedGame = await Game.update(req.body, {
             where: { id: req.params.id }
-        });
+        })
         if (updatedGame[0] === 0) {
             res.status(404).json({ message: 'Game not found' });
         } else {
