@@ -1,10 +1,97 @@
 .container {
     display: flex;
     flex-direction: row;
+    margin-left: 50px;
+    overflow-x: auto;
+}
+
+
+
+.largeContainer {
+    margin-top: 100px;
+    position: relative;
+    
+
+}
+body {
+    background-image: linear-gradient(rgba(131, 88, 248, 0.5), rgba(30, 0, 128, 0.5)), url(../images/output.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+}
+   
+.slide {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    color: white;
+    background-color: black;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 100%;
+}
+
+.slide:hover {
+    opacity: 100%;
+}
+ .prev {
+    
+left: 50px;
+}
+
+.next {
+    right:125px;
+} 
+
+.sidebar{
+ display: flex;
+    float: right;
+    width: 250px;
+    margin-right: 100px;
+    margin-top: 50px;
+    color: rgb(198, 195, 195);
+    position: absolute;
+    right: 0px;
+}
+input {
+    float: right;
 }
 
 .gamecard {
     margin:20px;
+    display: flex;
+    z-index: -1;
     
+}
+
+
+h1 {
+    
+    margin-left: 100px;
+    
+    color: white;
+}
+
+.card-body {
+    background:linear-gradient(rgba(131, 88, 248), rgba(30, 0, 128));
+}
+
+.card-title {
+    color:white
+}
+
+.sidebar h2 {
+    background-color: rgb(77, 0, 128, 0.3);
+}
+
+.giantContainer {
+   /* position: absolute; */
+   display: block;
+   
+   
 }
 

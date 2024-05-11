@@ -1,9 +1,9 @@
-.navbar {
+/* .navbar {
     background-color: #333;
     color: white;
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -17,6 +17,8 @@
     font-size: 24px;
     color: white;
     text-decoration: none;
+   float: left;
+   align-items: center;
 }
 
 .navbar-links a {
@@ -28,4 +30,9 @@
 
 .navbar-links a:hover {
     text-decoration: underline;
+} */
+
+
+.navbar {
+    background-color: green !important;
 }
