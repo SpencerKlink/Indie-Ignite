@@ -4,6 +4,21 @@ const { User } = require('../../models');
 const {adminUser} = require('../../config/middleware/adminAuthorization');
 const bcrypt = require('bcrypt');
 
+
+router.get('/', async (req, res) => {
+    try {
+        const userData = await User.findAll({
+            attributes: { exclude: ['password'] }
+        });
+        console.log("All users hit")
+
+        res.json(userData);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+
 // POST route for user signup
 router.post('/signup', async (req, res) => {
     try {
