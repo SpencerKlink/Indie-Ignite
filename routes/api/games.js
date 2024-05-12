@@ -3,6 +3,10 @@
 const express = require('express');
 const router = express.Router();
 const { Game } = require('../../models');
+const publicGameRoutes = require('./publicGameRoutes');  
+const adminGameRoutes = require('./adminGameRoutes');  
+const { findAll } = require('../../models/Game');
+const app = express('express');
 
 // GET route to retrieve all games
 router.get('/', async (req, res) => {
@@ -54,6 +58,24 @@ router.delete('/:id', async (req, res) => {
     } catch (error) {
         console.error('Error deleting game:', error);
         res.status(500).json({ message: 'Failed to delete game', error });
+    }
+});
+
+
+
+
+router.get('/games', async (req, res) => {
+    try {
+    // Search the database for a dish with an id that matches params
+    const gameData = await findAll();
+    // console.log(dishData) // unserialized
+    // We use .get({ plain: true }) on the object to serialize it so that it only includes the data that we need. 
+    const game= gameData.get({ plain: true });
+    console.log({serializedData: game})
+    // Then, the 'dish' template is rendered and dish is passed into the template.
+    res.render('games', game);
+    } catch (err) {
+        res.status(500).json(err);
     }
 });
 
