@@ -10,6 +10,11 @@
             <p>{{userDescription}}</p>
         </div>
     </div>
+<form action="/profile/upload-photo" method="POST" enctype="multipart/form-data" class="upload-form">
+    <label for="profileImage">Upload Profile Image:</label>
+    <input type="file" id="profileImage" name="profileImage" accept="image/*">
+    <button type="submit">Upload Image</button>
+</form>
     <div class="profile-creations">
         <h2>Creations</h2>
         <ul>
