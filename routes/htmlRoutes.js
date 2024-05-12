@@ -15,6 +15,11 @@ router.get('/profile', (req, res) => {
 });
 
 
+router.get('/game', (req, res) => {
+    res.render('gamePage'), { layout: false };  
+});
+
+
 
 
 
