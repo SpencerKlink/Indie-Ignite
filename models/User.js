@@ -1,8 +1,6 @@
-// User model
 const { Model, DataTypes } = require('sequelize');
-const { Sequelize } = require('sequelize');
-const sequelize = require('../config/config');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
+const sequelize = require('../config/connection');
 
 class User extends Model {
     checkPassword(loginPw) {
@@ -21,17 +19,14 @@ User.init(
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
         },
-
         email: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
             validate: {
                 isEmail: true,
-            }
-
+            },
         },
         password: {
             type: DataTypes.STRING,
@@ -47,7 +42,11 @@ User.init(
             validate: {
                 isIn: [['user', 'admin']]
             }
-        }
+        },
+        profilePicture: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
     },
     {
         hooks: {
