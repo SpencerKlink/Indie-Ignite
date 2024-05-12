@@ -1,0 +1,125 @@
+.html {
+    height: 100vh;
+    
+}
+
+body {
+    background-image: linear-gradient(rgba(131, 88, 248, 0.5), rgba(30, 0, 128, 0.5)), url(../images/gamepage.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    margin: 0;
+    
+    justify-content: center;
+}
+.pageContainer {
+    display: flex;
+}
+.gameTitle {
+    text-align: center;
+    color: black;
+}
+h5 {
+    margin: 15px;
+}
+.otherGames {
+    margin-top: 50px;
+    margin-bottom: 35px;
+}
+
+.sidebarLeft {
+    float: left;
+    width: 25vw;
+    text-align: center;
+    margin:50px;
+    color: white;
+    
+}
+.aboutMe {
+    margin-top: 20px;
+   text-align: center;
+  
+}
+
+.sidebarRight {
+    float: right;
+    width: 25vw;
+    text-align: center;
+   margin: 50px;
+}
+
+
+.smallImage {
+    max-width: 225px;
+    margin-right: 5px;
+    margin-right: 5px;
+    
+    
+
+}
+
+.smallImageContainer{
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+    max-width: 65vw;
+    margin-top: 50px;
+}
+
+.featuredImage {
+    max-width: 700px;
+    
+  
+}
+.featuredImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.displayContainer {
+    display: flex;
+    
+    flex-direction: column;
+    margin-top: 50px;
+
+    
+
+}
+
+.reviewContainer {
+    background-color: grey;
+    text-align: center;
+    margin-top: 200px;
+}
+
+.reviewBox {
+    width: 75vw;
+    height: 50px;
+}
+
+li {
+    list-style: none;
+}
+
+.supportPackage {
+    background-color: white;
+    margin-top: 25px;
+}
+
+.supportHeader {
+    margin-top: 15px;
+    
+    color: white;
+}
+
+a {
+    font-size: 50px;
+    text-decoration: none;
+    color: white;
+}
