@@ -4,6 +4,19 @@ const { Game } = require('../../models');
 const isAuth = require('../../config/middleware/auth'); 
 const { adminUser } = require('../../config/middleware/adminAuthorization');
 
+
+
+
+router.get('/', async (req, res) => {
+    try {
+        const games = await Game.findAll();
+        res.json(games);
+    } catch (error) {
+        console.error('Error getting games:', error);
+        res.status(500).json({ message: 'Failed to get games', error });
+    }
+});
+
 // POST route to add a new game
 router.post('/', isAuth, adminUser(["admin"]), async (req, res) => {
     try {

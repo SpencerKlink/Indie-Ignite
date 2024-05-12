@@ -18,9 +18,9 @@ router.get('/profile', (req, res) => {
 
 
 
-router.get('*', (req, res) => {
-    res.render('home'), { layout: false };  
-});
+// router.get('*', (req, res) => {
+//     res.render('home'), { layout: false };  
+// });
 
 
 
