@@ -6,6 +6,7 @@ const exphbs = require('express-handlebars');
 
 const sequelize = require('./config/config');  
 const routes = require('./routes');
+const profileApi = require('./routes/api/profileApi');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -42,6 +43,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
+app.use('/api/profile', profileApi);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
