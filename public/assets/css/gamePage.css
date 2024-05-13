@@ -1,6 +1,5 @@
 .html {
     height: 100vh;
-    
 }
 
 body {
@@ -14,19 +13,22 @@ body {
     width: 100vw;
     position: relative;
     margin: 0;
-    
     justify-content: center;
 }
+
 .pageContainer {
     display: flex;
 }
+
 .gameTitle {
     text-align: center;
     color: black;
 }
+
 h5 {
     margin: 15px;
 }
+
 .otherGames {
     margin-top: 50px;
     margin-bottom: 35px;
@@ -36,21 +38,20 @@ h5 {
     float: left;
     width: 25vw;
     text-align: center;
-    margin:50px;
+    margin: 50px;
     color: white;
-    
 }
+
 .aboutMe {
     margin-top: 20px;
-   text-align: center;
-  
+    text-align: center;
 }
 
 .sidebarRight {
     float: right;
     width: 25vw;
     text-align: center;
-   margin: 50px;
+    margin: 50px;
 }
 
 
@@ -58,12 +59,9 @@ h5 {
     max-width: 225px;
     margin-right: 5px;
     margin-right: 5px;
-    
-    
-
 }
 
-.smallImageContainer{
+.smallImageContainer {
     overflow-x: scroll;
     display: flex;
     flex-direction: row;
@@ -73,9 +71,8 @@ h5 {
 
 .featuredImage {
     max-width: 700px;
-    
-  
 }
+
 .featuredImageContainer {
     display: flex;
     justify-content: center;
@@ -84,12 +81,8 @@ h5 {
 
 .displayContainer {
     display: flex;
-    
     flex-direction: column;
     margin-top: 50px;
-
-    
-
 }
 
 .reviewContainer {
@@ -114,7 +107,6 @@ li {
 
 .supportHeader {
     margin-top: 15px;
-    
     color: white;
 }
 
