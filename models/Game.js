@@ -26,12 +26,30 @@ Game.init(
                 model: 'user',
                 key: 'id'
             }
-        }
+        },genre_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'genre',
+                key: 'id'
+            }
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+
+        trailer: {
+            type: DataTypes.STRING,
+            allowNull: true
+      
+       }
     },
+
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
+        timestamps: false,
         modelName: 'game'
     }
 );
