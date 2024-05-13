@@ -32,7 +32,7 @@ giantContainer.addEventListener("click", (event) => {
     } else if  (item.matches('.prev')) {
         const scrollPosition = item.nextElementSibling.scrollLeft;
         item.nextElementSibling.scrollTo({
-            left: scrollPosition - 1000,
+            left: scrollPosition - 1333,
             behavior: 'smooth'
         });
     }

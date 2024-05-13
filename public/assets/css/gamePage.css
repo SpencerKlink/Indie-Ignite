@@ -83,6 +83,8 @@ h5 {
     display: flex;
     flex-direction: column;
     margin-top: 50px;
+    align-items: center;
+    
 }
 
 .reviewContainer {
@@ -138,3 +140,26 @@ a {
     .next {
         right:200px;
     } 
+
+    .descriptionContainer {
+        background-color: black;
+        color: white;
+        margin-top: 50px;
+        height: 300px;
+        width: 900px;
+        text-align: center;
+        overflow-y: scroll;
+    }
+
+    .bottomContainer {
+        background-color: black;
+        color: white;
+    }
+
+    .descriptionContainer h2 {
+        margin-top: 20px;
+    }
+
+    .descriptionContainer p {
+        margin: 20px;
+    }
