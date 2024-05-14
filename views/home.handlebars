@@ -44,17 +44,9 @@
             <button class="slide prev"><i class="icon">prev</i></button>
             <div class="container">
 
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-
+                  {{#each games}}
+                {{> gamecard this}}
+               {{/each}}
 
             </div>
              <button class="slide next"> <i class="icon">next</i></button>
@@ -63,17 +55,10 @@
             <h1>New Games</h1>
              <button class="slide prev"><i class="icon">prev</i></button>
             <div class="container">
-
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
+              
+              {{#each games}}
+                {{> gamecard this}}
+               {{/each}}
 
 
             </div>
@@ -84,17 +69,9 @@
             <button class="slide prev"><i class="icon">prev</i></button>
             <div class="container">
 
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-                {{> gamecard}}
-
+                  {{#each games}}
+                {{> gamecard this}}
+               {{/each}}
 
             </div>
               <button class="slide next"> <i class="icon">next</i></button>
