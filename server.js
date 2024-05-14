@@ -45,10 +45,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes); 
 app.use('/api/profile', profileApi);  
 
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something went wrong!');
-});
+// app.use((err, req, res, next) => {
+//   console.error(err.stack);
+//   res.status(500).send('Something went wrong!');
+// });
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening on port:', PORT));
