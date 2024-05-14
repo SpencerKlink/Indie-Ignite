@@ -1,29 +1,24 @@
-<link rel="stylesheet" href="/assets/css/profile.css">
+<!-- Link to the edit profile-specific CSS -->
+<link rel="stylesheet" href="/assets/css/profileEdit.css">
 
-<div class="profile-container">
-    <div class="profile-header">
-        <div class="profile-image">
-            <img src="{{profileImageUrl}}" alt="Profile Image of {{userName}}">
-            <form action="/api/profile/upload-photo" method="POST" enctype="multipart/form-data" class="upload-form">
-                <label for="profileImage">Change Profile Image:</label>
-                <input type="file" id="profileImage" name="profileImage" accept="image/*">
-                <button type="submit">Upload Image</button>
-            </form>
+<form class="profile-container" action="/api/profile/update/{{userId}}" method="POST" enctype="multipart/form-data">
+    <div class="left-column">
+        <div class="profile-image-container">
+            <img src="{{profileImageUrl}}" alt="Profile Image of {{userName}}" class="profile-image">
+            <input type="file" name="profileImage" accept="image/*">
         </div>
-        <div class="profile-info">
-            <form id="profileEditForm" action="/api/profile/update/{{userId}}" method="POST">
-                <input type="text" name="userName" value="{{userName}}" class="edit-input">
-                <textarea name="userDescription">{{userDescription}}</textarea>
-                <button type="submit" class="save-btn">Save Changes</button>
-            </form>
-        </div>
+        <button type="submit">Save Changes</button>
     </div>
-    <div class="profile-creations">
+    <div class="center-column">
+        <input type="text" name="userName" value="{{userName}}" class="name-input">
+        <textarea name="userDescription">{{userDescription}}</textarea>
+    </div>
+    <div class="right-column">
         <h2>Creations</h2>
         {{#each creations}}
-        <div class="creation-item">
-            <a href="/game/{{this.id}}">{{this.title}}</a>
-        </div>
+            <div class="creation-item">
+                <input type="text" name="creationTitles" value="{{this.title}}">
+            </div>
         {{/each}}
     </div>
-</div>
+</form>
