@@ -39,6 +39,10 @@ router.get('/game', (req, res) => {
     res.render('gamePage', { layout: false });  
 });
 
+router.get('/profileEdit', (req, res) => {
+    res.render('profileEdit', { layout: false });  
+});
+
 // GET route to retrieve a specific game by its ID and render the gamecard partial
 router.get('/game/:id', async (req, res) => {
     try {
