@@ -4,9 +4,9 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const exphbs = require('express-handlebars');
 
-const sequelize = require('./config/config');  
-const routes = require('./routes');
-const profileApi = require('./routes/api/profileApi');
+const sequelize = require('./config/config');
+const routes = require('./routes');  
+const profileApi = require('./routes/api/profileApi');  
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -18,17 +18,17 @@ const helpers = {
 const hbs = exphbs.create({ helpers });
 
 const sess = {
-  secret: 'Super secret secret', 
+  secret: 'Super secret secret',
   cookie: {
-    maxAge: 300000,  
-    httpOnly: true,  
-    secure: false,   
+    maxAge: 300000, 
+    httpOnly: true, 
+    secure: false,  
     sameSite: 'strict'  
   },
-  resave: false,  
-  saveUninitialized: true,  
+  resave: false,
+  saveUninitialized: true,
   store: new SequelizeStore({
-    db: sequelize  
+    db: sequelize 
   })
 };
 
@@ -42,8 +42,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(routes);
-app.use('/api/profile', profileApi);
+app.use(routes); 
+app.use('/api/profile', profileApi);  
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
