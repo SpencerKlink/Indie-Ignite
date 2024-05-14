@@ -1,21 +1,26 @@
 <link rel="stylesheet" href="/assets/css/profile.css">
 
 <div class="profile-container">
-    <div class="profile-header">
-        <div class="profile-image">
-            <img src="{{profileImageUrl}}" alt="Profile Image of {{userName}}">
+    <div class="left-column">
+        <div class="profile-image-container">
+            <img src="{{profileImageUrl}}" alt="Profile Image of {{userName}}" class="profile-image">
         </div>
-        <div class="profile-info">
-            <h1>{{userName}}</h1>
-            <p>{{userDescription}}</p>
+        <div class="edit-profile-link">
+            {{#if ownProfile}}
+                <a href="/profile/edit/{{userId}}">Edit Profile</a>
+            {{/if}}
         </div>
     </div>
-    <div class="profile-creations">
+    <div class="center-column">
+        <h1>{{userName}}</h1>
+        <p>{{userDescription}}</p>
+    </div>
+    <div class="right-column">
         <h2>Creations</h2>
         {{#each creations}}
-        <div class="creation-item">
-            <a href="/game/{{this.id}}">{{this.title}}</a>
-        </div>
+            <div class="creation-item">
+                <a href="/game/{{this.id}}">{{this.title}}</a>
+            </div>
         {{/each}}
     </div>
 </div>
