@@ -8,24 +8,49 @@ const config = {
         password: process.env.DB_PASS,
         database: process.env.DB_NAME,
         host: process.env.DB_HOST,
-        dialect: 'mysql'
+        dialect: 'mysql',
+        port: 3306 
     },
     test: {
         username: process.env.DB_USER,
         password: process.env.DB_PASS,
         database: process.env.DB_NAME,
         host: process.env.DB_HOST,
-        dialect: 'mysql'
+        dialect: 'mysql',
+        port: 3306 
     },
     production: {
         username: process.env.DB_USER || "root",
         password: process.env.DB_PASS, 
         database: process.env.DB_NAME || "database_production",
         host: process.env.DB_HOST || "localhost",
-        dialect: 'mysql'
+        dialect: 'mysql',
+        port: 3306 
     }
 }[env];
 
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
+let sequelize; 
+
+if (process.env.JAWSDB_URL) {
+    sequelize = new Sequelize(process.env.JAWSDB_URL, {
+        dialect: 'mysql',
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false 
+            }
+        }
+    });
+} else {
+    sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
+
+sequelize.authenticate()
+    .then(() => {
+        console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    });
 
 module.exports = sequelize;
