@@ -74,7 +74,7 @@ router.get('/profileEdit', (req, res) => {
     res.render('profileEdit', { layout: false });  
 });
 
-router.get('/home', (req, res) => {
+router.get('/', (req, res) => {
     res.render('home', { layout: false });  
 });
 
