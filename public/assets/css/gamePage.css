@@ -88,6 +88,7 @@ h6 {
 }
 
 .smallImageContainer {
+   
     overflow-x: scroll;
     display: flex;
     flex-direction: row;
@@ -106,6 +107,7 @@ h6 {
 }
 
 .displayContainer {
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-top: 50px;
@@ -170,17 +172,23 @@ a {
 }
 
 .prev {
-
-    left: 250px;
+    position: absolute;
+    left: -50px;
     opacity: 0.3;
+    top: 30%;
+    transform: translateY(-50%);
 }
 .prev:hover {
     opacity: 1;
 }
 
 .next {
-    right: 250px;
+    position: absolute;
+    right: -50px;
     opacity: 0.3;
+    top: 30%;
+    transform: translateY(-50%);
+    
 }
 .next:hover {
     opacity: 1;
