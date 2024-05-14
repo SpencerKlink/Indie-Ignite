@@ -27,10 +27,10 @@ router.get('/login', (req, res) => {
 
 router.get('/profile', async (req, res) => {
     const user = await User.findOne({
-        where: {
-            id: req.session.userId
-        },
-        include: [Game]
+        // where: {
+        //     id: req.session.userId
+        // },
+        // include: [Game]
     });
     res.render('profile', { user, layout: false });
 });
