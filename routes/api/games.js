@@ -18,7 +18,17 @@ router.get('/', async (req, res) => {
         res.status(500).json({ message: 'Failed to get games', error });
     }
 });
-
+// route for retriving games soecific to the user
+router.get('/user/:userId', async (req, res) => {
+    try {
+        const games = await Game.findAll({ where: { user_id: req.params.userId } });
+        res.json(games);
+    } catch (error) {
+        console.error('Error getting user games:', error);
+        res.status(500).json({ message: 'Failed to get user games', error });
+    }
+});
+// post route for adding games to the database
 router.post('/', async (req, res) => {
     try {
         const newGame = await Game.create(req.body);
@@ -28,6 +38,8 @@ router.post('/', async (req, res) => {
         res.status(500).json({ message: 'Failed to create game', error });
     }
 });
+
+
 // updates games by id
 router.put('/:id', async (req, res) => {
     try {
