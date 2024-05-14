@@ -3,7 +3,7 @@
 }
 
 body {
-    background-image: linear-gradient(rgba(131, 88, 248, 0.5), rgba(30, 0, 128, 0.5)), url(../images/gamepage.jpeg);
+    background-image: linear-gradient(rgba(36, 24, 67, 0.5), rgba(30, 0, 128, 0.5)), url(../images/treegamebackground.jpeg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -20,13 +20,17 @@ body {
     display: flex;
 }
 
-.gameTitle {
+x .gameTitle {
     text-align: center;
     color: black;
 }
 
+.displayContainer h1 {
+    color: rgb(253, 250, 250)
+}
+
 h5 {
-    margin: 15px;
+    margin-top: 15px;
 }
 
 .otherGames {
@@ -36,22 +40,44 @@ h5 {
 
 .sidebarLeft {
     float: left;
-    width: 25vw;
+    width: 20vw;
     text-align: center;
-    margin: 50px;
+    margin-left: 50px;
     color: white;
 }
-
+h6 {
+    color: white;
+}
 .aboutMe {
-    margin-top: 20px;
+    margin-top: 40px;
     text-align: center;
+    max-height: 525px;
+    overflow-y: auto;
+    background-image: linear-gradient(rgba(36, 24, 67, 0.5), rgba(17, 1, 72, 0.5));
+    border-radius: 40px;
+}
+.otherGamesContainer {
+    margin-top: 250px;
+    text-align: center;
+    max-height: 300px;
+    overflow-y: auto;
+    background-image: linear-gradient(rgba(36, 24, 67, 0.5), rgba(17, 1, 72, 0.5));
+    border-radius: 40px;
+    
 }
 
+.otherGamesContainer:hover {
+    opacity: 1;
+}
+.aboutMe p {
+    margin: 20px;
+}
 .sidebarRight {
     float: right;
-    width: 25vw;
+    width: 20vw;
     text-align: center;
-    margin: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
 }
 
 
@@ -83,10 +109,12 @@ h5 {
     display: flex;
     flex-direction: column;
     margin-top: 50px;
+    align-items: center;
+
 }
 
 .reviewContainer {
-    background-color: grey;
+    background-image: linear-gradient();
     text-align: center;
     margin-top: 200px;
 }
@@ -101,13 +129,24 @@ li {
 }
 
 .supportPackage {
-    background-color: white;
+    background-image: linear-gradient(rgba(110, 70, 210), rgba(35, 19, 87));
+    color: white;
     margin-top: 25px;
+    border-radius: 20px;
+    opacity: 0.5;
+    
+}
+
+.supportPackage:hover {
+    opacity: 1;
 }
 
 .supportHeader {
     margin-top: 15px;
     color: white;
+}
+.supportPackage p {
+    margin: 0;
 }
 
 a {
@@ -117,9 +156,9 @@ a {
 }
 
 .slide {
-    
-   position: absolute;
-   margin-top: 350px;
+
+    position: absolute;
+    margin-top: 350px;
 
     height: 50px;
     width: 50px;
@@ -131,11 +170,50 @@ a {
 }
 
 .prev {
-   
-    left: 200px;
-    }
-    
-    .next {
-        right:200px;
-    } 
 
+    left: 250px;
+    opacity: 0.3;
+}
+.prev:hover {
+    opacity: 1;
+}
+
+.next {
+    right: 250px;
+    opacity: 0.3;
+}
+.next:hover {
+    opacity: 1;
+}
+
+.descriptionContainer {
+
+    color: white;
+    margin-top: 50px;
+    height: 300px;
+    width: 900px;
+    text-align: center;
+    overflow-y: scroll;
+   border-radius: 10px;
+    background-image: linear-gradient(rgb(20, 13, 40), rgba(35, 19, 87));
+    opacity: 0.6;
+}
+
+.descriptionContainer:hover {
+    opacity: 0.9;
+}
+
+.bottomContainer {
+    background-color: black;
+    color: white;
+}
+
+.descriptionContainer h2 {
+    margin-top: 20px;
+
+}
+
+.descriptionContainer p {
+    margin: 20px;
+
+}
