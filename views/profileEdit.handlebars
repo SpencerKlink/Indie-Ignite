@@ -1,48 +1,73 @@
-<link rel="stylesheet" href="/assets/css/profileEdit.css">
-
-<form class="profile-edit-container" action="/api/profile/update/{{userId}}" method="POST" enctype="multipart/form-data">
-    <div class="image-preview-container" id="imagePreview">
-        <img src="{{profileImageUrl}}" alt="Current Profile Image" class="edit-profile-image-preview">
-    </div>
-    <div class="edit-section">
-        <label>Profile Image:</label>
-        <input type="file" name="profileImage" accept="image/*" onchange="previewImage(event)">
-    </div>
-    <div class="edit-section">
-        <label>Name:</label>
-        <input type="text" name="userName" value="{{userName}}" class="edit-input">
-    </div>
-    <div class="edit-section">
-        <label>Description:</label>
-        <textarea name="userDescription">{{userDescription}}</textarea>
-    </div>
-    <div class="edit-creations">
-        <label>Creations:</label>
-        {{#each creations}}
-        <input type="text" name="creationLinks" value="{{this.title}}" class="creation-input">
-        {{/each}}
-        <button type="button" class="add-creation-btn">Add Another Creation</button>
-    </div>
-    <button type="submit" class="save-btn">Save Changes</button>
-</form>
-
-<script>
-function previewImage(event) {
-    const reader = new FileReader();
-    reader.onload = function() {
-        const output = document.getElementById('imagePreview');
-        output.innerHTML = '<img src="' + reader.result + '" class="edit-profile-image-preview"/>';
-    };
-    reader.readAsDataURL(event.target.files[0]);
-}
-
-document.querySelector('.add-creation-btn').addEventListener('click', function() {
-    const container = document.querySelector('.edit-creations');
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.name = 'creationLinks';
-    input.placeholder = 'Add new creation link';
-    input.classList.add('creation-input');
-    container.insertBefore(input, this);
-});
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/profileEdit.css">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <form class="container h-100" action="/api/profile/update/{{userId}}" method="POST" enctype="multipart/form-data">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-md-8">
+                <div class="image-preview-container mb-3" id="imagePreview">
+                    <img src="{{profileImageUrl}}" alt="Current Profile Image" class="img-fluid rounded-circle">
+                </div>
+                <div class="form-group bg-custom p-3 rounded">
+                    <label class="text-white">Profile Image:</label>
+                    <input type="file" name="profileImage" accept="image/*" class="form-control-file" onchange="previewImage(event)">
+                    <button type="button" id="generate-image-btn" class="btn btn-info mt-2">Generate Random Image</button>
+                </div>
+                <div class="form-group bg-custom p-3 rounded">
+                    <label class="text-white">Name:</label>
+                    <input type="text" name="userName" value="{{userName}}" class="form-control">
+                </div>
+                <div class="form-group bg-custom p-3 rounded">
+                    <label class="text-white">Description:</label>
+                    <textarea name="userDescription" class="form-control">{{userDescription}}</textarea>
+                </div>
+                <div class="form-group bg-custom p-3 rounded">
+                    <label class="text-white">Creations:</label>
+                    {{#each creations}}
+                    <input type="text" name="creationLinks" value="{{this.title}}" class="form-control mb-2">
+                    {{/each}}
+                    <button type="button" class="add-creation-btn btn btn-info">Add Another Creation</button>
+                </div>
+                <button type="submit" class="save-btn btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </form>
+    <script>
+        document.getElementById('generate-image-btn').addEventListener('click', function() {
+            fetch('/api/profile/random-image')
+            .then(response => response.json())
+            .then(data => {
+                if (data.imageUrl) {
+                    document.getElementById('imagePreview').innerHTML = '<img src="' + data.imageUrl + '" class="img-fluid rounded-circle"/>';
+                }
+            })
+            .catch(error => {
+                console.error('Error loading random image:', error);
+            });
+        });
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const output = document.getElementById('imagePreview');
+                output.innerHTML = '<img src="' + reader.result + '" class="img-fluid rounded-circle"/>';
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+        document.querySelector('.add-creation-btn').addEventListener('click', function() {
+            const container = this.parentElement;
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = 'creationLinks';
+            input.placeholder = 'Add new creation link';
+            input.classList.add('form-control', 'mb-2');
+            container.insertBefore(input, this);
+        });
+    </script>
+</body>
+</html>
