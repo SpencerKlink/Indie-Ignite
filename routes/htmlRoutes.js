@@ -56,6 +56,10 @@ router.get('/game/:id', async (req, res) => {
     }
 });
 
+router.get('/profile', (req, res) => {
+    res.render('profile', { layout: false });
+});
+
 router.get('/gamepage', async (req, res) => {
     const gameId = req.query.id; // Get the game's ID from the query parameter
 

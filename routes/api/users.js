@@ -25,7 +25,7 @@ router.post('/signup', async (req, res) => {
             username: req.body.username,
             email: req.body.email,
             userRole : req.body.userRole,
-            password: await bcrypt.hash(req.body.password, 10)
+            password: req.body.password
         });
 
         req.session.save(() => {
@@ -55,7 +55,7 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-        const validPassword = await bcrypt.compare(req.body.password, user.password);
+        const validPassword = await user.checkPassword(req.body.password);
         
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect password!' });
