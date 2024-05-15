@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/uploadpage.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Kode+Mono:wght@400..700&family=Micro+5&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        </style>
+    <title>Upload Page</title>
+</head>
+<body>
+    <div class="position-relative">
+        <div class="position-absolute top-0 start-50 translate-middle-x">
+            <h1>Upload Your Game</h1>
+        </div>
+    </div>
+    <div class="content-container mt-4 bg">
+        <div class="upload-section mt-4">
+            <!-- Upload form fields -->
+            <form>
+                <label for="game-title">Game title:</label>
+                <input type="text" id="game-title" name="game-title">
+            </form>
+
+            <form >
+            <label for="realease-date"> Estimated Release Date</label>
+            <input type="date" id="realease-date" name="realease-date"></form>
+            </form> 
+
+            <form>
+            <textarea id="game-description" name="game-description" placeholder="Game Description"></textarea>
+            </form>
+
+            <!-- Drag and drop area -->
+            <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+                <p>Drag or drop photos or video here.</p>
+            </div>
+            
+            <div class="mb-1">
+                <label for="formFileSm" class="form-label">or uplooad a file from you computer</label>
+                <input class="form-control form-control-sm" id="formFileSm" type="file">
+            </div>
+
+            <div class="mb-1">
+                <label for="formFileSm" class="form-label">select main photo</label>
+                <input class="form-control form-control-sm" id="formFileSm" type="file">
+            </div>
+            
+            <button type="button" class="btn btn-primary">Submit</button>
+
+        </div>
+        <div class="supporter-packages mt-4">
+            <!-- Supporter packages -->
+
+            <h3>Create Supporters packages</h3>
+            <div id="p1">
+                <h5>Level One</h5>
+                    <form>
+                        <textarea id="package-includes-lv1" name="packages-lv1" placeholder="What is included"></textarea>
+                    </form>
+                <div class="input-group mb-1">
+                    <input type="text" class="form-control" placeholder="enter a price" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+            <div id="p2">
+                <h4>Level Two</h5>
+                    <form>
+                        <textarea id="packge-includes-lv2" name="packages-lv2" placeholder="What is included"></textarea>
+                    </form>
+                <div class="input-group mb-1">
+                    <input type="text" class="form-control" placeholder="enter a price" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+            <div id="p3">
+                <h5>Level Three</h5>
+                    <form>
+                        <textarea id="packge-includes-lv3" name="packages-lv3" placeholder="What is included"></textarea>
+                    </form>
+                <div class="input-group mb-1">
+                    <input type="text" class="form-control" placeholder="enter a price" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    
+        <script src="/uploadpage.js"></script>
+</body>
+</html>
+</html>
