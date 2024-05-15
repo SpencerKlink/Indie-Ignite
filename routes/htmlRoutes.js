@@ -1,13 +1,24 @@
 const express = require('express');
-const router = express.Router();
+const multer = require('multer');
+const path = require('path');
 const { Game, User } = require('../models');
+const router = express.Router();
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './public/uploads/'); 
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ storage: storage });
 
 router.get('/', async (req, res) => {
     try {
         const gameData = await Game.findAll();
-
-        const games = gameData.map((game) => game.get({ plain: true }));
-
+        const games = gameData.map(game => game.get({ plain: true }));
         res.render('home', { games, layout: false });
     } catch (error) {
         console.error('Error getting games:', error);
@@ -15,42 +26,72 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Login page
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
         res.redirect('/');
         return;
     }
-
     res.render('login', { layout: false });
 });
 
-router.get('/profile', async (req, res) => {
-    const user = await User.findOne({
-        // where: {
-        //     id: req.session.userId
-        // },
-        // include: [Game]
-    });
-    res.render('profile', { user, layout: false });
-});
-
 router.get('/game', (req, res) => {
-    res.render('gamePage', { layout: false });  
+    res.render('gamePage', { layout: false });
 });
 
-router.get('/profileEdit', (req, res) => {
-    res.render('profileEdit', { layout: false });  
+router.get('/upload', (req, res) => {
+    res.render('upload', { layout: false });
 });
 
-// GET route to retrieve a specific game by its ID and render the gamecard partial
 router.get('/game/:id', async (req, res) => {
     try {
         const game = await Game.findByPk(req.params.id);
-        res.render('gamecard', game);
+        if (!game) {
+            res.status(404).send('Game not found');
+            return;
+        }
+        res.render('gamecard', { game: game.get({ plain: true }) });
     } catch (error) {
         console.error('Error getting game:', error);
         res.status(500).json({ message: 'Failed to get game', error });
+    }
+});
+
+router.get('/profile', async (req, res) => {
+    try {
+        const user = await User.findOne({
+            // where: { id: req.session.userId },
+            // include: [Game]
+        });
+        if (!user) {
+            res.status(404).send('User not found');
+            return;
+        }
+        res.render('profile', { user: user.get({ plain: true }), layout: false });
+    } catch (error) {
+        console.error('Error accessing user profile:', error);
+        res.status(500).send('Error accessing profile');
+    }
+});
+
+router.get('/profileEdit', (req, res) => {
+    res.render('profileEdit', { layout: false });
+});
+
+router.post('/api/profile/update/:userId', upload.single('profileImage'), async (req, res) => {
+    try {
+        const user = await User.findByPk(req.params.userId);
+        if (!user) {
+            res.status(404).send('User not found');
+            return;
+        }
+        if (req.file) {
+            user.profileImageUrl = '/uploads/' + req.file.filename;
+        }
+        await user.save();
+        res.redirect('/profile/' + req.params.userId);
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        res.status(500).send('Error updating profile: ' + error.message);
     }
 });
 
