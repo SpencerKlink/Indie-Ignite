@@ -1,28 +1,26 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/assets/css/profile.css">
 
-<div class="profile-container">
-    <div class="left-column">
-        <div class="profile-image-container">
-            <img src="{{profileImageUrl}}" alt="Profile Image of {{userName}}" class="profile-image">
+<div class="container-fluid h-100">
+    <div class="row align-items-center h-100">
+        <div class="col-md-4 col-sm-12 text-center profile-image-section">
+            <img src="{{profileImageUrl}}" alt="Profile Image of {{userName}}" class="profile-image rounded-circle img-fluid">
         </div>
-        <div class="edit-profile-link">
-            {{#if ownProfile}}
-                <a href="/profile/edit/{{userId}}">Edit Profile</a>
-            {{/if}}
-        </div>
-    </div>
-    <div class="center-column">
-        <h1>{{userName}}</h1>
-        <p>{{userDescription}}</p>
-    </div>
-    <div class="right-column">
-        <h2>Creations</h2>
-        {{#each creations}}
-            <div class="creation-item">
-                <a href="/game/{{this.id}}">{{this.title}}</a>
+        <div class="col-md-8 col-sm-12">
+            <h2 class="mt-3">About Me!</h2>
+            <div class="profile-about-section bg-custom p-4 shadow rounded">
+                <div class="description-box">
+                    <p>{{userDescription}}</p>
+                </div>
             </div>
-        {{/each}}
+            <h2 class="mt-3">Creations</h2>
+            <div class="profile-creations-section bg-custom mt-4 p-3 rounded">
+                {{#each creations}}
+                <div class="creation-item my-2">
+                    <a href="/game/{{this.id}}" class="text-white">{{this.title}}</a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
     </div>
 </div>
-
-<script src="/assets/js/profile.js"></script>
