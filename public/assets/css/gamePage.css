@@ -333,14 +333,14 @@ a {
         overflow: auto;
     }
 
-    /* .featuredImage {
+    .featuredImage {
         width: unset;
         height: unset;
-        height: 300px;
+        height: 250px;
         width: 100%;
         
       
-    } */
+    }
 
     .smallImageContainer {
         max-width: unset;
