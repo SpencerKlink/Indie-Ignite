@@ -57,7 +57,7 @@ router.get('/game/:id', async (req, res) => {
 });
 
 router.get('/profile', (req, res) => {
-    res.render('profile', { layout: false });
+    res.render('profile');
 });
 
 router.get('/gamepage', async (req, res) => {
@@ -80,6 +80,7 @@ router.get('/gamepage', async (req, res) => {
 
 router.get('/profileEdit', (req, res) => {
     res.render('profileEdit');
+
 });
 
 router.post('/api/profile/update/:userId', upload.single('profileImage'), async (req, res) => {
