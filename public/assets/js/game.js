@@ -41,6 +41,20 @@ displayContainer.addEventListener("click", (event) => {
         });
     }
 });
+const smallImageContainer = document.querySelector('.smallImageContainer');
+const featuredImage = document.querySelector('.featuredImage');
+
+smallImageContainer.addEventListener('click', (event) => {
+    event.preventDefault();  // Prevent the default behavior of the click event
+
+    let item = event.target;
+
+    // Check if the clicked item is an image
+    if (item.tagName === 'IMG') {
+        // Change the src of the featured image to the src of the clicked image
+        featuredImage.src = item.src;
+    }
+});
 
 
 

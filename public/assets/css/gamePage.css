@@ -88,7 +88,9 @@ h6 {
 
 
 .smallImage {
+    min-width: 225px;
     max-width: 225px;
+    height: 150px;
     margin-right: 5px;
     margin-right: 5px;
 }
@@ -100,10 +102,13 @@ h6 {
     flex-direction: row;
     max-width: 50vw;
     margin-top: 50px;
+    cursor: grab;
 }
 
 .featuredImage {
-    max-width: 700px;
+   max-width: 850px;
+    height: 500px;
+    width: 100%;
 }
 
 .featuredImageContainer {
@@ -328,9 +333,14 @@ a {
         overflow: auto;
     }
 
-    .featuredImage {
-        max-width: 100vw;
-    }
+    /* .featuredImage {
+        width: unset;
+        height: unset;
+        height: 300px;
+        width: 100%;
+        
+      
+    } */
 
     .smallImageContainer {
         max-width: unset;
