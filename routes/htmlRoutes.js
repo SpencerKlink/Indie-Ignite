@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     try {
         const gameData = await Game.findAll();
         const games = gameData.map(game => game.get({ plain: true }));
-        res.render('home', { games, layout: false });
+        res.render('home', { games });
     } catch (error) {
         console.error('Error getting games:', error);
         res.status(500).json({ message: 'Failed to get games', error });
@@ -35,11 +35,11 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/game', (req, res) => {
-    res.render('gamePage', { layout: false });
+    res.render('gamePage');
 });
 
 router.get('/upload', (req, res) => {
-    res.render('upload', { layout: false });
+    res.render('upload');
 });
 
 router.get('/game/:id', async (req, res) => {
@@ -56,25 +56,43 @@ router.get('/game/:id', async (req, res) => {
     }
 });
 
-router.get('/gamepage', async (req, res) => {
-    const gameId = req.query.id; // Get the game's ID from the query parameter
-
+router.get('/profile', async (req, res) => {
     try {
-        const game = await Game.findByPk(gameId); // Get the game data
-
-        if (game) {
-            res.render('gamepage', { game: game.get({ plain: true }) });
-        } else {
-            res.status(404).send('Game not found');
+        const user = await User.findOne({
+            // where: { id: req.session.userId },
+            // include: [Game]
+        });
+        if (!user) {
+            res.status(404).send('User not found');
+            return;
         }
+        res.render('profile', { user: user.get({ plain: true }) });
     } catch (error) {
-        console.error('Error getting game:', error);
-        res.status(500).json({ message: 'Failed to get game', error });
+        console.error('Error accessing user profile:', error);
+        res.status(500).send('Error accessing profile');
     }
 });
 
-router.get('/upload', (req, res) => {
-    res.render('upload', { layout: false });
+router.get('/profileEdit', (req, res) => {
+    res.render('profileEdit');
+});
+
+router.post('/api/profile/update/:userId', upload.single('profileImage'), async (req, res) => {
+    try {
+        const user = await User.findByPk(req.params.userId);
+        if (!user) {
+            res.status(404).send('User not found');
+            return;
+        }
+        if (req.file) {
+            user.profileImageUrl = '/uploads/' + req.file.filename;
+        }
+        await user.save();
+        res.redirect('/profile/' + req.params.userId);
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        res.status(500).send('Error updating profile: ' + error.message);
+    }
 });
 
 module.exports = router;
