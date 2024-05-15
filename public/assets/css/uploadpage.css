@@ -1,0 +1,39 @@
+body {
+    background-image: linear-gradient(rgba(131, 88, 248, 0.5), rgba(30, 0, 128, 0.5)), url(/public/assets/images/output.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+.upload-section,
+.supporter-packages {
+    background-color: #9370db;
+    border-radius: 5px;
+    padding: 20px;
+    width: 45%;
+}
+#drop_zone {
+    border: 2px dashed rgb(106, 24, 145);
+    width: 300px;
+    height: 100px;
+}
+#drop_zone p {
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+
+h1{
+
+    font-family: "Kode Mono", serif;
+}
