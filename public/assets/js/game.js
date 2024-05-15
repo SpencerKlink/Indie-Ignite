@@ -1,5 +1,5 @@
 const displayContainer = document.querySelector('.displayContainer');
-const scrollableElement = document.querySelector('.smallImageContainer'); // replace with the actual selector of your scrollable element
+const scrollableElement = document.querySelector('.smallImageContainer'); 
 
 // displayContainer.addEventListener("click", (event) => {
 //     const item = event.target;
@@ -21,8 +21,6 @@ const scrollableElement = document.querySelector('.smallImageContainer'); // rep
 
 displayContainer.addEventListener("click", (event) => {
     let item = event.target;
-
-    // If the clicked item is the icon, treat it as if the button was clicked
     if (item.matches(".icon")) {
         item = item.parentElement;
     }
@@ -39,6 +37,16 @@ displayContainer.addEventListener("click", (event) => {
             left: scrollPosition - 750,
             behavior: 'smooth'
         });
+    }
+});
+const smallImageContainer = document.querySelector('.smallImageContainer');
+const featuredImage = document.querySelector('.featuredImage');
+
+smallImageContainer.addEventListener('click', (event) => {
+    event.preventDefault();
+    let item = event.target;
+    if (item.tagName === 'IMG') {
+        featuredImage.src = item.src;
     }
 });
 
