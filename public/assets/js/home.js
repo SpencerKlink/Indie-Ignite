@@ -37,3 +37,15 @@ giantContainer.addEventListener("click", (event) => {
         });
     }
 })
+
+document.querySelectorAll('.gamecard').forEach(gamecard => {
+    gamecard.addEventListener('click', () => {
+        const gameId = gamecard.id;
+        if (gameId) {
+            window.location.href = '/game?id=' + gameId;
+        } else {
+            console.error('Game ID is not set');
+        }
+    });
+});
+console.log('home.js loaded');

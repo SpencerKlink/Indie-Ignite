@@ -54,4 +54,25 @@ router.get('/game/:id', async (req, res) => {
     }
 });
 
+router.get('/gamepage', async (req, res) => {
+    const gameId = req.query.id; // Get the game's ID from the query parameter
+
+    try {
+        const game = await Game.findByPk(gameId); // Get the game data
+
+        if (game) {
+            res.render('gamepage', { game: game.get({ plain: true }) });
+        } else {
+            res.status(404).send('Game not found');
+        }
+    } catch (error) {
+        console.error('Error getting game:', error);
+        res.status(500).json({ message: 'Failed to get game', error });
+    }
+});
+
+router.get('/upload', (req, res) => {
+    res.render('upload', { layout: false });
+});
+
 module.exports = router;
