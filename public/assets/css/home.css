@@ -3,6 +3,8 @@
     flex-direction: row;
     margin-left: 50px;
     overflow-x: scroll;
+    position: relative;
+    max-width: 50vw;
 }
 
 
@@ -39,12 +41,19 @@ body {
     opacity: 100%;
 }
  .prev {
-    
-left: 50px;
+    position: absolute;
+    left: 1px;
+    opacity: 0.3;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .next {
-    right:125px;
+   position: absolute;
+    right: 1000px;
+    opacity: 0.3;
+    top: 50%;
+    transform: translateY(-50%);
 } 
 
 .sidebar{
@@ -91,8 +100,18 @@ h1 {
 .giantContainer {
    /* position: absolute; */
    display: block;
+   position: relative;
    
    
+}
+
+.buttonContainer {
+    display: flex; /* Added */
+    justify-content: space-between; /* Added */
+    align-items: center; /* Added */
+    width: 1500px;
+    overflow: hidden;
+  
 }
 
 
