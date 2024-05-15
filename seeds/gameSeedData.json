@@ -1,75 +1,75 @@
 [
-    {
-      "id": 1,
-      "title": "game 1",
-      "description": "Description for Game 1",
-      "user_id": 1,
-      "genre_id": 2
+  {
+    "id": 1,
+    "title": "game 1",
+    "description": "Description for Game 1",
+    "user_id": 1,
+    "genre_id": 2
 
-    },
-    {
-      "id": 2,
-      "title": "Ballz",
-      "description": "Description for Game 2",
-      "user_id": 2,
-      "genre_id": 1
-    },
-    {
-      "id": 3,
-      "title": "Game 3",
-      "description": "Description for Game 3",
-      "user_id": 3,
-      "genre_id": 1
-    },
-    {
-      "id": 4,
-      "title": "Game 4",
-      "description": "Description for Game 4",
-      "user_id": 1,
-      "genre_id": 4
-    },
-    {
-      "id": 5,
-      "title": "Game 5",
-      "description": "Description for Game 5",
-      "user_id": 3,
-      "genre_id":4
-    },
-    {
-      "id": 6,
-      "title": "Game 6",
-      "description": "Description for Game 6",
-      "user_id": 2,
-      "genre_id": 2
-    },
-    {
-      "id": 7,
-      "title": "Game 7",
-      "description": "Description for Game 7",
-      "user_id": 1,
-      "genre_id": 3
-    },
-    {
-      "id": 8,
-      "title": "Game 8",
-      "description": "Description for Game 8",
-      "user_id": 3,
-      "genre_id": 1
-    },
-    {
-      "id": 9,
-      "title": "Game 9",
-      "description": "Description for Game 9",
-      "user_id": 2,
-      "genre_id": 2
-    },
-    {
-      "id": 10,
-      "title": "Game 10",
-      "description": "Description for Game 10",
-      "user_id": 1,
-      "genre_id": 3
-    }
+  },
+  {
+    "id": 2,
+    "title": "Ballz",
+    "description": "Description for Game 2",
+    "user_id": 2,
+    "genre_id": 1
+  },
+  {
+    "id": 3,
+    "title": "Game 3",
+    "description": "Description for Game 3",
+    "user_id": 2,
+    "genre_id": 1
+  },
+  {
+    "id": 4,
+    "title": "Game 4",
+    "description": "Description for Game 4",
+    "user_id": 1,
+    "genre_id": 4
+  },
+  {
+    "id": 5,
+    "title": "Game 5",
+    "description": "Description for Game 5",
+    "user_id": 3,
+    "genre_id":4
+  },
+  {
+    "id": 6,
+    "title": "Game 6",
+    "description": "Description for Game 6",
+    "user_id": 2,
+    "genre_id": 2
+  },
+  {
+    "id": 7,
+    "title": "Game 7",
+    "description": "Description for Game 7",
+    "user_id": 3,
+    "genre_id": 3
+  },
+  {
+    "id": 8,
+    "title": "Game 8",
+    "description": "Description for Game 8",
+    "user_id": 1,
+    "genre_id": 1
+  },
+  {
+    "id": 9,
+    "title": "Game 9",
+    "description": "Description for Game 9",
+    "user_id": 1,
+    "genre_id": 2
+  },
+  {
+    "id": 10,
+    "title": "Game 10",
+    "description": "Description for Game 10",
+    "user_id": 1,
+    "genre_id": 3
+  }
 
-    
-  ]
+
+]
