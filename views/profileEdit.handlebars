@@ -1,24 +1,48 @@
-<!-- Link to the edit profile-specific CSS -->
 <link rel="stylesheet" href="/assets/css/profileEdit.css">
 
-<form class="profile-container" action="/api/profile/update/{{userId}}" method="POST" enctype="multipart/form-data">
-    <div class="left-column">
-        <div class="profile-image-container">
-            <img src="{{profileImageUrl}}" alt="Profile Image of {{userName}}" class="profile-image">
-            <input type="file" name="profileImage" accept="image/*">
-        </div>
-        <button type="submit">Save Changes</button>
+<form class="profile-edit-container" action="/api/profile/update/{{userId}}" method="POST" enctype="multipart/form-data">
+    <div class="image-preview-container" id="imagePreview">
+        <img src="{{profileImageUrl}}" alt="Current Profile Image" class="edit-profile-image-preview">
     </div>
-    <div class="center-column">
-        <input type="text" name="userName" value="{{userName}}" class="name-input">
+    <div class="edit-section">
+        <label>Profile Image:</label>
+        <input type="file" name="profileImage" accept="image/*" onchange="previewImage(event)">
+    </div>
+    <div class="edit-section">
+        <label>Name:</label>
+        <input type="text" name="userName" value="{{userName}}" class="edit-input">
+    </div>
+    <div class="edit-section">
+        <label>Description:</label>
         <textarea name="userDescription">{{userDescription}}</textarea>
     </div>
-    <div class="right-column">
-        <h2>Creations</h2>
+    <div class="edit-creations">
+        <label>Creations:</label>
         {{#each creations}}
-            <div class="creation-item">
-                <input type="text" name="creationTitles" value="{{this.title}}">
-            </div>
+        <input type="text" name="creationLinks" value="{{this.title}}" class="creation-input">
         {{/each}}
+        <button type="button" class="add-creation-btn">Add Another Creation</button>
     </div>
+    <button type="submit" class="save-btn">Save Changes</button>
 </form>
+
+<script>
+function previewImage(event) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const output = document.getElementById('imagePreview');
+        output.innerHTML = '<img src="' + reader.result + '" class="edit-profile-image-preview"/>';
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+
+document.querySelector('.add-creation-btn').addEventListener('click', function() {
+    const container = document.querySelector('.edit-creations');
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.name = 'creationLinks';
+    input.placeholder = 'Add new creation link';
+    input.classList.add('creation-input');
+    container.insertBefore(input, this);
+});
+</script>

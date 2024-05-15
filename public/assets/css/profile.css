@@ -1,129 +1,70 @@
+body {
+    background-image: linear-gradient(rgba(131, 88, 248, 0.5), rgba(30, 0, 128, 0.5)), url(../images/profileBACKGROUND.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+}
+
+html {
+    height: 100%;
+}
+
 .profile-container {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr;
     align-items: start;
     justify-content: center;
     padding: 20px;
-    height: calc(100vh - 40px);
-    max-width: 1200px; 
+    gap: 20px;
+    max-width: 1200px;
     margin: auto;
 }
 
-.left-column {
+.profile-image-section {
+    grid-row: 1 / 3;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-}
-
-.center-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 20px;
-}
-
-.right-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.profile-header, .profile-info {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
 }
 
 .profile-image {
-    width: 340px;
-    height: 340px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    object-fit: cover;
 }
 
-.profile-image img {
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    object-fit: cover; 
-}
-
-.edit-input, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; 
-}
-
-textarea {
-    height: 100px;
-}
-
-.save-btn {
-    padding: 10px 20px;
-    background-color: #28a745; 
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.upload-form {
-    width: 80%;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.8);
+.profile-about-section {
+    background: rgba(163, 78, 237, 0.8);
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.description-box {
+    background: rgba(163, 78, 237, 0.8); 
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.profile-creations-section {
+    grid-row: 2;
+    background: rgba(163, 78, 237, 0.8);
+    border-radius: 10px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.upload-form label {
-    margin-bottom: 10px;
-}
-
-.upload-form input[type="file"] {
-    cursor: pointer;
-}
-
-.upload-form button {
-    margin-top: 10px;
-    padding: 8px 0;
-    width: 100%;
-    background-color: #6441A5; 
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.profile-creations {
-    width: 100%;
-    overflow-y: auto;
-}
-
-.creation-item {
-    margin: 10px 0;
-    text-align: center;
-}
-
 .creation-item a {
-    color: #FFFFFF;
+    color: white;
     text-decoration: none;
-    font-size: 18px;
+    margin-top: 10px;
 }
+
+

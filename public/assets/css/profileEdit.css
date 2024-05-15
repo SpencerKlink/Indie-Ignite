@@ -1,53 +1,74 @@
-.profile-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
+body {
+    background-image: linear-gradient(rgba(131, 88, 248, 0.5), rgba(30, 0, 128, 0.5)), url(../images/profileEDIT.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
 }
 
-.left-column, .center-column, .right-column {
+.profile-edit-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
+    padding: 20px;
+    width: 80%;
+    margin: auto;
 }
 
-.profile-image-container {
-    width: 100%;
-    padding: 10px;
-}
-
-.profile-image {
+.image-preview-container {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-input[type="file"] {
-    margin-top: 10px;
+.edit-profile-image-preview {
+    width: 100%;
+    height: auto;
 }
 
-.name-input, textarea {
+.edit-section, .edit-creations {
+    width: 80%;
+    background-color: rgba(154, 59, 183, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"], textarea, input[type="file"] {
     width: 100%;
     padding: 8px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
     border: 1px solid #ccc;
-    border-radius: 4px;
 }
 
 textarea {
     height: 100px;
 }
 
-button {
+.creation-input {
+    margin-top: 5px;
+}
+
+.add-creation-btn, .save-btn {
     padding: 10px 20px;
-    background-color: #28a745;
+    margin-top: 20px;
+    background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    font-size: 16px;
+    width: 100%;
 }
