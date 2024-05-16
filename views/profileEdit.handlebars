@@ -38,36 +38,36 @@
             </div>
         </div>
     </form>
-    <script>
-        document.getElementById('generate-image-btn').addEventListener('click', function() {
-            fetch('/api/profile/random-image')
-            .then(response => response.json())
-            .then(data => {
-                if (data.imageUrl) {
-                    document.getElementById('imagePreview').innerHTML = '<img src="' + data.imageUrl + '" class="img-fluid rounded-circle"/>';
-                }
-            })
-            .catch(error => {
-                console.error('Error loading random image:', error);
-            });
-        });
-        function previewImage(event) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                const output = document.getElementById('imagePreview');
-                output.innerHTML = '<img src="' + reader.result + '" class="img-fluid rounded-circle"/>';
-            };
-            reader.readAsDataURL(event.target.files[0]);
+<script>
+    document.getElementById('generate-image-btn').addEventListener('click', function() {
+    fetch('/api/profile/random-image') 
+    .then(response => response.json())
+    .then(data => {
+        if (data.imageUrl) {
+            document.getElementById('imagePreview').innerHTML = '<img src="' + data.imageUrl + '" class="img-fluid rounded-circle"/>';
         }
-        document.querySelector('.add-creation-btn').addEventListener('click', function() {
-            const container = this.parentElement;
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.name = 'creationLinks';
-            input.placeholder = 'Add new creation link';
-            input.classList.add('form-control', 'mb-2');
-            container.insertBefore(input, this);
-        });
-    </script>
+    })
+    .catch(error => {
+        console.error('Error loading random image:', error);
+    });
+    })
+    function previewImage(event) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const output = document.getElementById('imagePreview');
+        output.innerHTML = '<img src="' + reader.result + '" class="img-fluid rounded-circle"/>';
+    };
+    reader.readAsDataURL(event.target.files[0]);
+    }
+    document.querySelector('.add-creation-btn').addEventListener('click', function() {
+    const container = this.parentElement;
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.name = 'creationLinks';
+    input.placeholder = 'Add new creation link';
+    input.classList.add('form-control', 'mb-2');
+    container.insertBefore(input, this);
+    });
+</script>
 </body>
 </html>
