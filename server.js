@@ -7,7 +7,7 @@ const exphbs = require('express-handlebars');
 
 const sequelize = require('./config/config');
 const routes = require('./routes');  
-const profileApi = require('./routes/api/profileApi');  
+const profileApi = require('./routes/api/profileApi'); 
 
 const app = express();
 const PORT = process.env.PORT || 3001;
