@@ -1,6 +1,7 @@
 // Game model
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/config');
+const Game = require('./Game');
 
 class Level extends Model {}
 
@@ -23,15 +24,24 @@ Level.init(
         price: {
             type: DataTypes.INTEGER,
             allowNull: false
-        }
+        },
+        gameId: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: Game,
+                key: 'id',
+            },
+        },
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
         timestamps: false,
-        modelName: 'Level'
+        modelName: 'level',
     }
 );
 
 module.exports = Level;
+
+
