@@ -8,6 +8,7 @@ const exphbs = require('express-handlebars');
 const sequelize = require('./config/config');
 const routes = require('./routes');  
 const profileApi = require('./routes/api/profileApi'); 
+const userRoutes = require('./routes/api/users');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -50,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes); 
 app.use('/api/profile', profileApi);  
+app.use('/api/users', userRoutes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening on port:', PORT));

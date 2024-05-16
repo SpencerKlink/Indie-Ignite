@@ -17,3 +17,4 @@ if (logoutButton) {
         }).catch(error => console.error('Error logging out:', error));
     });
 }
+
