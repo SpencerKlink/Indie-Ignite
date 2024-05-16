@@ -7,7 +7,9 @@
     
     
 }
-
+.logo {
+    margin-right:15px;
+}
 .navbar-container {
     width: 100vw;
     max-width: 1200px;
