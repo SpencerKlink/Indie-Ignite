@@ -8,6 +8,7 @@ body {
     background-repeat: no-repeat;
     height: 100vh;
     position: relative;
+    color:rgb(239, 225, 252)
 }
 
 .content-container {
@@ -37,4 +38,26 @@ body {
 h1{
 
     font-family: "Kode Mono", serif;
+}
+
+
+#drop_zone {
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    #drop_zone {
+        min-height: 100px;
+    }
+}
+
+@media (max-width: 576px) {
+    #drop_zone {
+        min-height: 80px;
+        min-width: 40px;
+    }
 }
