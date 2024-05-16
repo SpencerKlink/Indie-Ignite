@@ -19,80 +19,54 @@
     </div>
     <div class="content-container mt-4 bg">
         <div class="upload-section mt-4">
-            <!-- Upload form fields -->
             <form>
                 <label for="game-title">Game title:</label>
                 <input type="text" id="game-title" name="game-title">
             </form>
-
             <form >
             <label for="realease-date"> Estimated Release Date</label>
             <input type="date" id="realease-date" name="realease-date"></form>
             </form> 
-
             <form>
             <textarea id="game-description" name="game-description" placeholder="Game Description"></textarea>
             </form>
-
-            <!-- Drag and drop area -->
             <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
                 <p>Drag or drop photos or video here.</p>
             </div>
-            
             <div class="mb-1">
                 <label for="formFileSm" class="form-label">or uplooad a file from you computer</label>
                 <input class="form-control form-control-sm" id="formFileSm" type="file">
             </div>
-
             <div class="mb-1">
                 <label for="formFileSm" class="form-label">select main photo</label>
                 <input class="form-control form-control-sm" id="formFileSm" type="file">
             </div>
-            
             <button type="button" class="btn btn-primary">Submit</button>
-
         </div>
         <div class="supporter-packages mt-4">
-            <!-- Supporter packages -->
-
-            <h3>Create Supporters packages</h3>
-            <div id="p1">
-                <h5>Level One</h5>
-                    <form>
-                        <textarea id="package-includes-lv1" name="packages-lv1" placeholder="What is included"></textarea>
-                    </form>
-                <div class="input-group mb-1">
-                    <input type="text" class="form-control" placeholder="enter a price" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button type="button" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-
-            <div id="p2">
-                <h4>Level Two</h5>
-                    <form>
-                        <textarea id="packge-includes-lv2" name="packages-lv2" placeholder="What is included"></textarea>
-                    </form>
-                <div class="input-group mb-1">
-                    <input type="text" class="form-control" placeholder="enter a price" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button type="button" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-
-            <div id="p3">
-                <h5>Level Three</h5>
-                    <form>
-                        <textarea id="packge-includes-lv3" name="packages-lv3" placeholder="What is included"></textarea>
-                    </form>
-                <div class="input-group mb-1">
-                    <input type="text" class="form-control" placeholder="enter a price" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button type="button" class="btn btn-primary">Submit</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
- 
-    
+    <h3>Create Supporters Packages</h3>
+    <form action="/api/games" method="POST" enctype="multipart/form-data"></form>
+<!-- Level One -->
+<div id="p1">
+    <h5>Level One</h5>
+    <input type="text" name="supporterPackages[0].price" class="form-control mb-2" placeholder="Enter a price for Level One">
+    <textarea name="supporterPackages[0].details" class="form-control mb-2" placeholder="Describe what is included in Level One"></textarea>
+</div>
+<!-- Level Two -->
+<div id="p2">
+    <h5>Level Two</h5>
+    <input type="text" name="supporterPackages[1].price" class="form-control mb-2" placeholder="Enter a price for Level Two">
+    <textarea name="supporterPackages[1].details" class="form-control mb-2" placeholder="Describe what is included in Level Two"></textarea>
+</div>
+<!-- Level Three -->
+<div id="p3">
+    <h5>Level Three</h5>
+    <input type="text" name="supporterPackages[2].price" class="form-control mb-2" placeholder="Enter a price for Level Three">
+    <textarea name="supporterPackages[2].details" class="form-control mb-2" placeholder="Describe what is included in Level Three"></textarea>
+</div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</div>
         <script src="assets/js/uploadpage.js"></script>
 </body>
 </html>
