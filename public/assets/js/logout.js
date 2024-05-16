@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         logoutButton.addEventListener('click', function(event) {
             event.preventDefault();
             console.log('Logout button clicked');
-            fetch('/api/users/logout', {
+            fetch('api/users/logout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include'

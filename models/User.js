@@ -47,7 +47,7 @@ User.init(
                 isIn: [['user', 'admin']]
             }
         },
-        profilePicture: {
+        profile_picture: {
             type: DataTypes.STRING,
             allowNull: true,
         },

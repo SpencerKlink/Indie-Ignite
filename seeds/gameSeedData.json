@@ -1,76 +1,82 @@
 [
   {
     "id": 1,
-    "title": "game 1",
-    "description": "Description for Game 1",
+    "title": "Goat Simulator 3",
+    "description": "Experience the life of a goat in this quirky physics-based simulation game.",
     "user_id": 1,
-    "genre_id": 2
-
+    "genre_id": 2,
+    "image": "https://cdn1.epicgames.com/offer/50bbaf85f4454b1c88786efeede5b302/EGS_GoatSimulator3PreUdderStandardEdition_CoffeeStainNorthAB_Bundles_S1_2560x1440-abe5fb17ae3d47330cf310d2b1cfe138"
   },
   {
     "id": 2,
-    "title": "Ballz",
-    "description": "Description for Game 2",
+    "title": "Hollow Knight",
+    "description": "Explore a sprawling underground world filled with insects and heroes in this atmospheric, hand-drawn adventure.",
     "user_id": 4,
     "genre_id": 1,
-    "image":"https://i.kym-cdn.com/photos/images/original/000/810/771/9e8.png"
+    "image": "https://oyster.ignimgs.com/mediawiki/apis.ign.com/hollow-knight-wiki/d/d7/Hollow_Knight_Header.jpg"
   },
   {
     "id": 3,
-    "title": "Game 3",
-    "description": "Description for Game 3",
+    "title": "Stardew Valley",
+    "description": "Inherit a farm and navigate the challenges of rural life and community in this open-ended farming RPG.",
     "user_id": 2,
-    "genre_id": 1
+    "genre_id": 1,
+    "image": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/en_CA/games/switch/s/stardew-valley-switch/hero"
   },
   {
     "id": 4,
-    "title": "Game 4",
-    "description": "Description for Game 4",
+    "title": "Undertale",
+    "description": "Navigate through a mysterious world where your actions have real consequences in this narrative-driven RPG.",
     "user_id": 1,
-    "genre_id": 4
+    "genre_id": 4,
+    "image": "https://www.kolpaper.com/wp-content/uploads/2020/05/Undertale-Wallpaper.jpg"
   },
   {
     "id": 5,
-    "title": "Game 5",
-    "description": "Description for Game 5",
-    "user_id": 3,
-    "genre_id":4
+    "title": "Cuphead",
+    "description": "Battle bizarre creatures and bosses in this retro-style platformer inspired by 1930s cartoons.",
+    "user_id": 10,
+    "genre_id": 3,
+    "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0e65e39f-a443-4999-b2ae-ab1da8959164/dbqugvg-95e64dbb-65b0-45da-b07e-aaaddc34334b.png/v1/fill/w_1024,h_1024,q_75,strp/cuphead__sonic_the_hedgehog_2_style_logo__by_shaneproduction2014-dbqugvg.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl0sIm9iaiI6W1t7InBhdGgiOiIvZi8wZTY1ZTM5Zi1hNDQzLTQ5OTktYjJhZS1hYjFkYTg5NTkxNjQvZGJxdWd2Zy05NWU2NGRiYi02NWIwLTQ1ZGEtYjA3ZS1hYWFkZGMzNDMzNGIucG5nIiwid2lkdGgiOiI8PTEwMjQiLCJoZWlnaHQiOiI8PTEwMjQifV1dfQ.pPtGJajxq2tpJG5i2jRsPC7tlpUsux_0PJ6xmTk16ho"
   },
   {
     "id": 6,
-    "title": "Game 6",
-    "description": "Description for Game 6",
-    "user_id": 2,
-    "genre_id": 2
+    "title": "Terraria",
+    "description": "Dig, fight, explore, build! Nothing is impossible in this action-packed adventure game.",
+    "user_id": 5,
+    "genre_id": 1,
+    "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/9d5129b7-ce49-47de-9432-43876d118928/d6r6e7d-3aa7ddfc-7628-4442-8541-1fe1dc3844c2.png/v1/fill/w_1635,h_489,q_75,strp/terraria_logo_hd_by_dragondeplatino-d6r6e7d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl0sIm9iaiI6W1t7InBhdGgiOiIvaS85ZDUxMjliNy1jZTQ5LTQ3ZGUtOTQzMi00Mzg3NmQxMTg5MjgvZDZyNmU3ZC0zYWE3ZGRmYy03NjI4LTQ0NDItODU0MS0xZmUxZGMzODQ0YzIucG5nIiwid2lkdGgiOiI8PTE2MzUiLCJoZWlnaHQiOiI8PTQ4OSJ9XV19.pg2RtYV1R-XmgxpqYZK7RJvBzgdkCQXp3h_7ifm-ipM"
   },
   {
     "id": 7,
-    "title": "Game 7",
-    "description": "Description for Game 7",
-    "user_id": 3,
-    "genre_id": 3
+    "title": "Minecraft",
+    "description": "Explore randomly generated worlds and build amazing things from the simplest of homes to the grandest of castles.",
+    "user_id": 6,
+    "genre_id": 1,
+    "image": "https://logosmarcas.net/wp-content/uploads/2020/04/Minecraft-Emblema.jpg"
   },
   {
     "id": 8,
-    "title": "Game 8",
-    "description": "Description for Game 8",
-    "user_id": 1,
-    "genre_id": 1
+    "title": "Among Us",
+    "description": "Play with 4-10 players online or via local WiFi as you attempt to prepare your spaceship for departure, but beware as one or more random players among the Crew are Impostors bent on killing everyone!",
+    "user_id": 7,
+    "genre_id": 4,
+    "image": "https://www.pockettactics.com/wp-content/uploads/2021/02/among-us-logo-1-1.jpg"
   },
   {
     "id": 9,
-    "title": "Game 9",
-    "description": "Description for Game 9",
-    "user_id": 1,
-    "genre_id": 2
+    "title": "Fall Guys",
+    "description": "Fall Guys is a massively multiplayer party game with up to 60 players online in a free-for-all struggle through round after round of escalating chaos until one victor remains!",
+    "user_id": 8,
+    "genre_id": 3,
+    "image": "https://gmedia.playstation.com/is/image/SIEPDC/fall-guys-ffa-s2-logo-en-01-05sep22?$native--t$"
   },
   {
     "id": 10,
-    "title": "Game 10",
-    "description": "Description for Game 10",
-    "user_id": 1,
-    "genre_id": 3
+    "title": "Cyberpunk 2077",
+    "description": "Become a cyberpunk, an urban mercenary equipped with cybernetic enhancements and build your legend on the streets of Night City.",
+    "user_id": 9,
+    "genre_id": 2,
+    "image": "https://hdqwalls.com/wallpapers/cyberpunk-2077-game-logo-4k-xm.jpg"
   }
-
-
 ]
