@@ -26,7 +26,8 @@
   },
   {
     "id": 5,
-    "username": "user5",
+    "username": "Dan the Man",
+    "about_me": "Im dan the goat, they know me out here in the streets of CT",
     "email": "user5@example.com",
     "password": "password5"
   }

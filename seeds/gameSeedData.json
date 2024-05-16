@@ -1,10 +1,11 @@
 [
   {
     "id": 1,
-    "title": "game 1",
-    "description": "Description for Game 1",
-    "user_id": 1,
-    "genre_id": 2
+    "title": "GiantContainer",
+    "description": "I daniel, created the giant container",
+    "user_id": 5,
+    "genre_id": 2,
+    "image":"/assets/images/giantcontainer.png"
 
   },
   {
