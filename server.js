@@ -54,5 +54,5 @@ app.use('/api/profile', profileApi);
 app.use('/api/users', userRoutes);
 
 sequelize.sync({ force: true }).then(() => {
-  app.listen(PORT, () => console.log('Now listening on port:', PORT));
+  app.listen(PORT, () => console.log('Now listening on sup gang:', PORT));
 });
