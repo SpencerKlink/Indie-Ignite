@@ -136,8 +136,4 @@ router.post('/api/profile/update/:userId', upload.single('profileImage'), async 
 });
 
 
-router.get('*', (req, res) => {
-    res.status(404).render('404page');  // assuming you have a 404page view
-  });
-
 module.exports = router;
