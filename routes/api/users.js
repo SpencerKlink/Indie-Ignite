@@ -50,19 +50,15 @@ router.post('/login',preventDuplicateSession, async (req, res) => {
                 email: req.body.email
             }
         });
-
         if (!user) {
             res.status(400).json({ message: 'No user found with that email address!' });
             return;
         }
-
         const validPassword = await user.checkPassword(req.body.password);
-        
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect password!' });
             return;
         }
-
         req.session.save(() => {
             req.session.userId = user.id;
             req.session.username = user.username;
@@ -88,6 +84,26 @@ router.post('/logout', (req, res) => {
         });
     } else {
         res.status(404).send('Not logged in');
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const userData = await User.destroy({
+            where: {
+                id: req.params.id
+            }
+        });
+
+        if (!userData) {
+            res.status(404).json({ message: 'No user found with this id!' });
+            return;
+        }
+
+        res.status(200).json(userData);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
     }
 });
 
