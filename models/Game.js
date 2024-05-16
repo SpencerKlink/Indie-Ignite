@@ -34,7 +34,7 @@ Game.init(
             }
         },
         image: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(1000),
             allowNull: true
         },
 

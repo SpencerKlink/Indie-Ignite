@@ -28,9 +28,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// router.get('/', async (req, res) => {
-//     res.render('home');
-// });
 
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
@@ -38,10 +35,6 @@ router.get('/login', (req, res) => {
         return;
     }
     res.render('login', { layout: false });
-});
-
-router.get('/game', (req, res) => {
-    res.render('gamePage');
 });
 
 router.get('/upload', (req, res) => {
@@ -67,8 +60,38 @@ router.get('/game/:id', async (req, res) => {
     }
 });
 
-router.get('/profile', (req, res) => {
-    res.render('profile');
+// Route for the current user's profile
+router.get('/profile', async (req, res) => {
+    try {
+        const user = await User.findOne({
+            where: { id: req.session.userId },
+        });
+        if (!user) {
+            res.status(404).send('User not found');
+            return;
+        }
+        res.render('profile', { user: user.get({ plain: true }) });
+    } catch (error) {
+        console.error('Error accessing user profile:', error);
+        res.status(500).send('Error accessing profile');
+    }
+});
+
+// Route for other users' profiles
+router.get('/profile/:id', async (req, res) => {
+    try {
+        const user = await User.findOne({
+            where: { id: req.params.id },
+        });
+        if (!user) {
+            res.status(404).send('User not found');
+            return;
+        }
+        res.render('profile', { user: user.get({ plain: true }) });
+    } catch (error) {
+        console.error('Error accessing user profile:', error);
+        res.status(500).send('Error accessing profile');
+    }
 });
 
 router.get('/gamepage', async (req, res) => {
@@ -113,6 +136,8 @@ router.post('/api/profile/update/:userId', upload.single('profileImage'), async 
 });
 
 
-
+router.get('*', (req, res) => {
+    res.status(404).render('404page');  // assuming you have a 404page view
+  });
 
 module.exports = router;

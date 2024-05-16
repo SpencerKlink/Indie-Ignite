@@ -1,34 +1,82 @@
 [
   {
     "id": 1,
-    "username": "AlphaKennyBody",
-    "email": "user1@example.com",
-    "password": "password1"
+    "username": "PixelMaster",
+    "about_me": "I love pixel art and retro games.",
+    "email": "pixelmaster@example.com",
+    "password": "password1",
+    "profile_picture": "/assets/images/gamepage.jpeg"
   },
   {
     "id": 2,
-    "username": "BenDover",
-    "email": "user2@example.com",
-    "password": "password2"
+    "username": "GameGuru",
+    "about_me": "I'm a game enthusiast and love exploring new indie games.",
+    "email": "gameguru@example.com",
+    "password": "password2",
+    "profile_picture": "/assets/images/gamepage.jpeg"
   },
   {
     "id": 3,
-    "username": "User3",
-    "email": "user3@example.com",
-    "password": "password3"
+    "username": "IndieInnovator",
+    "about_me": "I enjoy creating innovative indie games in my spare time.",
+    "email": "indieinnovator@example.com",
+    "password": "password3",
+    "profile_picture": "/assets/images/gamepage.jpeg"
   },
   {
     "id": 4,
-    "username": "ImWeToddEd",
+    "username": "RetroRevivalist",
     "about_me": "As an independent game developer, I am passionate about creating unique and engaging experiences for players. I focus on innovative gameplay mechanics and immersive storytelling, and I am dedicated to pushing the boundaries of what's possible in game design. I believe in the power of games to create meaningful connections and inspire creativity",
-    "email": "user4@example.com",
-    "password": "password4"
+    "email": "retrorevivalist@example.com",
+    "password": "password4",
+    "profile_picture":"/assets/images/gamepage.jpeg"
   },
   {
     "id": 5,
-    "username": "Dan the Man",
-    "about_me": "Im dan the goat, they know me out here in the streets of CT",
-    "email": "user5@example.com",
-    "password": "password5"
+    "username": "ArcadeAce",
+    "about_me": "Arcade games are my passion and I love sharing that passion with others.",
+    "email": "arcadeace@example.com",
+    "password": "password5",
+    "profile_picture": "/assets/images/gamepage.jpeg"
+  },
+  {
+    "id": 6,
+    "username": "BitBlaster",
+    "about_me": "I'm a fan of bit games and love to explore new game mechanics.",
+    "email": "bitblaster@example.com",
+    "password": "password6",
+    "profile_picture": "/assets/images/gamepage.jpeg"
+  },
+  {
+    "id": 7,
+    "username": "CodeConqueror",
+    "about_me": "I love coding and conquering new challenges in game development.",
+    "email": "codeconqueror@example.com",
+    "password": "password7",
+    "profile_picture": "/assets/images/gamepage.jpeg"
+  },
+  {
+    "id": 8,
+    "username": "DevDynamo",
+    "about_me": "As a developer, I'm always looking for new ways to push the boundaries of game design.",
+    "email": "devdynamo@example.com",
+    "password": "password8",
+    "profile_picture": "/assets/images/gamepage.jpeg"
+  },
+  {
+    "id": 9,
+    "username": "EpicEngineer",
+    "about_me": "I'm an engineer with a passion for creating epic gaming experiences.",
+    "email": "epicengineer@example.com",
+    "password": "password9",
+    "profile_picture": "/assets/images/gamepage.jpeg"
+  },
+  {
+    "id": 10,
+    "username": "FunFactory",
+    "about_me": "I believe in making games that are fun and engaging for all players.",
+    "email": "funfactory@example.com",
+    "password": "password10",
+    "profile_picture": "/assets/images/gamepage.jpeg"
   }
 ]

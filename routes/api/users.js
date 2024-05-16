@@ -4,6 +4,7 @@ const { User } = require('../../models');
 const bcrypt = require('bcrypt');
 const preventDuplicateSession = require('../../config/middleware/currentSession.js');
 
+
 router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll({
