@@ -1,7 +1,11 @@
 <a href="/game?id={{id}}">
 <div class="gamecard" id="{{Id}}">
     <div class="card" style="width: 18rem;">
+        {{#if image}}
+        <img class="card-img-top" src="{{image}}">
+        {{else}}
         <img class="card-img-top" src="/assets/images/stock-vector-vector-illustration-neon-future-game-pad-background-1861318969.jpg">
+        {{/if}}
         <div class="card-body">
             <h5 aclass="card-title">{{title}} {{upvotes}}</h5>
         </div>

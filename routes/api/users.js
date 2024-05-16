@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { User } = require('../../models'); 
 const bcrypt = require('bcrypt');
-
+const preventDuplicateSession = require('../../config/middleware/currentSession.js');
 
 router.get('/', async (req, res) => {
     try {
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 });
 
 // POST route for user signup
-router.post('/signup', async (req, res) => {
+router.post('/signup',preventDuplicateSession, async (req, res) => {
     try {
         const newUser = await User.create({
             username: req.body.username,
@@ -42,7 +42,7 @@ router.post('/signup', async (req, res) => {
 });
 
 // POST route for user login
-router.post('/login', async (req, res) => {
+router.post('/login',preventDuplicateSession, async (req, res) => {
     try {
         const user = await User.findOne({
             where: {
@@ -76,14 +76,17 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// POST route for user logout
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
-        req.session.destroy(() => {
-            res.status(204).end();
+        req.session.destroy(err => {
+            if (err) {
+                res.status(500).json({ message: 'Could not log out, please try again' });
+            } else {
+                res.status(204).send();
+            }
         });
     } else {
-        res.status(404).end();
+        res.status(404).send('Not logged in');
     }
 });
 

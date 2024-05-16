@@ -12,7 +12,8 @@
     "title": "Ballz",
     "description": "Description for Game 2",
     "user_id": 2,
-    "genre_id": 1
+    "genre_id": 1,
+    "image":"https://i.kym-cdn.com/photos/images/original/000/810/771/9e8.png"
   },
   {
     "id": 3,

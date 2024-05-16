@@ -1,14 +1,23 @@
-const logout = async () => {
-    const response = await fetch('/api/users/logout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    });
-  
-    if (response.ok) {
-      document.location.replace('/');
-    } else {
-      alert('Failed to log out.');
+console.log('Logout script loaded');
+document.addEventListener('DOMContentLoaded', function() {
+    const logoutButton = document.getElementById('logoutButton');
+    console.log('Logout button:', logoutButton);
+    if (logoutButton) {
+        logoutButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            console.log('Logout button clicked');
+            fetch('/api/users/logout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include'
+            }).then(response => {
+                console.log('Logout response:', response);
+                if (response.ok) {
+                    window.location.href = '/login';
+                } else {
+                    throw new Error('Failed to logout');
+                }
+            }).catch(error => console.error('Error logging out:', error));
+        });
     }
-  };
-  
-  document.querySelector('#logout').addEventListener('click', logout);
+});
