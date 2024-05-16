@@ -135,5 +135,27 @@ router.post('/api/profile/update/:userId', upload.single('profileImage'), async 
     }
 });
 
+// // POST route to handle game upload
+// router.post('/api/games/upload', upload.array('gameImages', 5), async (req, res) => {
+//     try {
+//         const { title, releaseDate, description, supporterPackages } = req.body;
+//         const images = req.files.map(file => file.path);
+//         const game = await Game.create({
+//             title,
+//             description,
+//             releaseDate,
+//             mainImage: images[0],
+//             supporterPackages 
+//         });
+//         res.redirect(`/game/${game.id}`);
+//     } catch (error) {
+//         console.error('Error uploading game:', error);
+//         res.status(500).send('Failed to upload game');
+//     }
+// });
+
+router.get('*', (req, res) => {
+    res.status(404).render('404page');  
+});
 
 module.exports = router;

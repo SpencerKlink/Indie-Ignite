@@ -16,7 +16,6 @@ document.querySelector('#upload-form').addEventListener('click', async (event) =
     const result = await response.json();
     document.querySelector('.profile-image img').src = result.imageURL;
 });
-// userId fetches games specific to user
 async function fetchUserCreations(userId) {
     const response = await fetch(`/api/games/user/${userId}`);
     const creations = await response.json();

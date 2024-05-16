@@ -1,5 +1,3 @@
-// const express = require('express')
-
 const express = require('express');
 const router = express.Router();
 const { Game } = require('../../models');
@@ -38,8 +36,6 @@ router.post('/', async (req, res) => {
         res.status(500).json({ message: 'Failed to create game', error });
     }
 });
-
-
 // updates games by id
 router.put('/:id', async (req, res) => {
     try {
@@ -72,10 +68,6 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ message: 'Failed to delete game', error });
     }
 });
-
-
-
-
 router.get('/games', async (req, res) => {
     try {
     // Search the database for a dish with an id that matches params
@@ -90,6 +82,5 @@ router.get('/games', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
 
 module.exports = router;

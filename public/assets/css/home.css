@@ -6,6 +6,7 @@
     overflow-x: scroll;
     position: relative;
     max-width: 90vw;
+    
 }
 
 
@@ -70,11 +71,16 @@ body {
 input {
     float: right;
 }
-
+.card-img-top {
+    height: 201px;
+    width: 286px;
+}
 .gamecard {
     margin:20px;
     display: flex;
     z-index: -1;
+    width: 288px;
+    height: 267px;
     text-decoration: none;
     
     

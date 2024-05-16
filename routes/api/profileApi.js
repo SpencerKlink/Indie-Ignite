@@ -1,9 +1,10 @@
+// routes/api/profileApi.js
 const express = require('express');
 const multer = require('multer');
 const axios = require('axios');
 const router = express.Router();
 const isAuthenticated = require('../../config/middleware/auth'); 
-const ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY; 
+const ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 
 const storage = multer.diskStorage({
     destination: function(req, file, callback) {
@@ -17,6 +18,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.get('/random-image', async (req, res) => {
+    console.log("Fetching Random Image")
     try {
         const response = await axios.get(`https://api.unsplash.com/photos/random?client_id=${ACCESS_KEY}&query=portrait`);
         const imageUrl = response.data.urls.regular;
