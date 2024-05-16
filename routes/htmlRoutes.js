@@ -3,6 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const { Game, User } = require('../models');
 const router = express.Router();
+const withAuth = require('../config/middleware/auth');
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -15,7 +16,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.get('/', async (req, res) => {
+router.get('/',withAuth, async (req, res) => {
     try {
         const gameData = await Game.findAll();
         const games = gameData.map(game => game.get({ plain: true }));
