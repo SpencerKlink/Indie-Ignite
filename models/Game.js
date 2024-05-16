@@ -37,11 +37,9 @@ Game.init(
             type: DataTypes.STRING(1000),
             allowNull: true
         },
-
         trailer: {
             type: DataTypes.STRING,
             allowNull: true
-      
        }
     },
 

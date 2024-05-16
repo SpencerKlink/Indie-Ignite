@@ -2,6 +2,7 @@ const Game = require('./Game');
 const User = require('./User');
 const Review = require('./Review');
 const Genre = require('./Genre');
+const Level = require('./Level');
 
 User.hasMany(Game, {
     foreignKey: 'user_id',
@@ -23,6 +24,16 @@ Game.belongsTo(Genre, {
     
 Genre.hasMany(Game, {
     foreignKey: 'genre_id',
+    onDelete: 'CASCADE',
+    });
+
+Game.hasMany(Level, {
+    foreignKey: '_id',
+    onDelete: 'CASCADE',
+    });
+
+Level.belongsTo(Game,{
+    foreignKey: 'game_id',
     onDelete: 'CASCADE',
     });
 
