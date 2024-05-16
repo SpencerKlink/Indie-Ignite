@@ -16,7 +16,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.get('/',withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
+    console.log('home route hit');
     try {
         const gameData = await Game.findAll();
         const games = gameData.map(game => game.get({ plain: true }));
@@ -26,6 +27,10 @@ router.get('/',withAuth, async (req, res) => {
         res.status(500).json({ message: 'Failed to get games', error });
     }
 });
+
+// router.get('/', async (req, res) => {
+//     res.render('home');
+// });
 
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
@@ -44,13 +49,18 @@ router.get('/upload', (req, res) => {
 });
 
 router.get('/game/:id', async (req, res) => {
+    console.log('game route hit');
     try {
-        const game = await Game.findByPk(req.params.id);
+        const game = await Game.findByPk(req.params.id, {
+            include: [{ model: User, as: 'user' }]
+        });
         if (!game) {
             res.status(404).send('Game not found');
             return;
         }
-        res.render('gamecard', { game: game.get({ plain: true }) });
+        const gameData = game.get({ plain: true });
+        console.log(gameData);
+        res.render('gamePage', { game: gameData });
     } catch (error) {
         console.error('Error getting game:', error);
         res.status(500).json({ message: 'Failed to get game', error });
@@ -101,5 +111,8 @@ router.post('/api/profile/update/:userId', upload.single('profileImage'), async 
         res.status(500).send('Error updating profile: ' + error.message);
     }
 });
+
+
+
 
 module.exports = router;
