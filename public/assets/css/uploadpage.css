@@ -1,5 +1,6 @@
 body {
-    background-image: linear-gradient(rgba(131, 88, 248, 0.5), rgba(30, 0, 128, 0.5)), url(/public/assets/images/output.jpg);
+    background-image: linear-gradient(rgba(36, 24, 67, 0.5), rgba(30, 0, 128, 0.5)), url(../images/output.jpg);
+
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
