@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/gamePage.css">
-    <title>Document</title>
+    <title>{{game.title}}</title>
 </head>
 
 <body>
     <div class="pageContainer">
         <aside class="sidebarLeft">
             <div class="aboutMe" >
-                <a href="#">mikef</a>
+                <a href="#">{{game.user.username}}</a>
                 <h5>About Me:</h5>
-                <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                <p> {{game.user.about_me}}
                 <p>
             </div>
             <div class="otherGamesContainer">
@@ -37,34 +37,34 @@
 
 
         <div class="displayContainer">
-            <h1 class="gameTitle">GAME TITLE HERE</h1>
+            <h1 class="gameTitle">{{game.title}}</h1>
 
             <div class="featuredImageContainer">
 
                 <img class="featuredImage"
-                    src="/assets/images/stock-vector-vector-illustration-neon-future-game-pad-background-1861318969.jpg"
-                    alt="">
+                    src="{{game.image}}"
+                    alt="{{game.title}}">
             </div>
             <button class="slide prev"><i class="icon">prev</i></button>
             <div class="smallImageContainer">
                
                 <img class="smallImage"
-                    src="/assets/images/background-login.jpg"
+                    src="/assets/images/stock-vector-vector-illustration-neon-future-game-pad-background-1861318969.jpg"
                     alt="">
                 <img class="smallImage"
-                    src="/assets/images/gamepage.jpeg"
+                    src="/assets/images/stock-vector-vector-illustration-neon-future-game-pad-background-1861318969.jpg"
                     alt="">
                 <img class="smallImage"
-                    src="/assets/images/logo.png"
+                    src="/assets/images/stock-vector-vector-illustration-neon-future-game-pad-background-1861318969.jpg"
                     alt="">
                 <img class="smallImage"
-                    src="/assets/images/profileBACKGROUND.jpg"
+                    src="/assets/images/stock-vector-vector-illustration-neon-future-game-pad-background-1861318969.jpg"
                     alt="">
                 <img class="smallImage"
-                    src="/assets/images/output.jpg"
+                    src="/assets/images/stock-vector-vector-illustration-neon-future-game-pad-background-1861318969.jpg"
                     alt="">
                 <img class="smallImage"
-                    src="/assets/images/treegamebackground.jpeg"
+                    src="/assets/images/stock-vector-vector-illustration-neon-future-game-pad-background-1861318969.jpg"
                     alt="">
                 <img class="smallImage"
                     src="/assets/images/stock-vector-vector-illustration-neon-future-game-pad-background-1861318969.jpg"
@@ -83,8 +83,8 @@
             <button class="slide next"> <i class="icon">next</i></button>
 
         <div class="descriptionContainer">
-            <h2> "TITLE PARTIAL" Description</h2>
-            <p> "description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here description partial here</p>
+            <h2> "{{game.title}}" Description</h2>
+            <p>{{game.description}}</p>
                 <h3>Other Game Info</h3>
                 <p>Other Game info goes here</p>
                 <h3>Minumum Specs Required</h3>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="levelOne supportPackage">
                     <h5>level two</h5>
-                   <p>level one +</p>
+                   <p>level o  ne +</p>
                    <p>behind the scenes content</p>
                   <button>$9.99</button>
                 </div>
