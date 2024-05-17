@@ -1,0 +1,23 @@
+[
+      {
+        "id": 1,
+        "level": 3,
+        "reward": "Experience the life of a goat in this quirky physics-based simulation game.",
+        "price": 10.99,
+        "gameId": 1
+      },
+      {
+        "id": 2,
+        "level": 2,
+        "reward": "Experience the life of a goat in this quirky physics-based simulation game.",
+        "price": 10.99,
+        "gameId": 2
+      },
+      {
+        "id": 3,
+        "level": 1,
+        "reward": "Experience the life of a goat in this quirky physics-based simulation game.",
+        "price": 10.99,
+        "gameId": 3
+      }
+]

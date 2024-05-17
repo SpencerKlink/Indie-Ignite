@@ -1,13 +1,11 @@
-Gamepage <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/gamePage.css">
     <title>{{game.title}}</title>
 </head>
-
 <body>
     <div class="pageContainer">
         <aside class="sidebarLeft">
@@ -31,23 +29,17 @@ Gamepage <!DOCTYPE html>
                 <p>lorem ipsum</p>
                 <p>lorem ipsum</p>
                 <p>lorem ipsum</p>
-
             </div>
         </aside>
-
-
         <div class="displayContainer">
             <h1 class="gameTitle">{{game.title}}</h1>
-
             <div class="featuredImageContainer">
-
                 <img class="featuredImage"
                     src="{{game.image}}"
                     alt="{{game.title}}">
             </div>
             <button class="slide prev"><i class="icon">prev</i></button>
             <div class="smallImageContainer">
-               
                 <img class="smallImage"
                     src="{{game.image}}"
                     alt="{{game.title}}">
@@ -78,10 +70,8 @@ Gamepage <!DOCTYPE html>
                 <img class="smallImage"
                     src="/assets/images/stock-vector-vector-illustration-neon-future-game-pad-background-1861318969.jpg"
                     alt="">
-
             </div>
             <button class="slide next"> <i class="icon">next</i></button>
-
         <div class="descriptionContainer">
             <h2> "{{game.title}}" Description</h2>
             <p>{{game.description}}</p>
@@ -90,46 +80,30 @@ Gamepage <!DOCTYPE html>
                 <h3>Minumum Specs Required</h3>
                 <p>specs goes here</p>
         </div>
-
         </div>
         <aside class="sidebarRight">
-
             <h2 class="supportHeader">Support This Game!</h2>
             <h6>(Support Packages Available for Purchase Soon!)</h5>
             <div class="supportContainer">
-                <div class="levelOne supportPackage">
-                    <h5>level one</h5>
-                   <p>free shirt</p>
-                   <p>early access content</p>
-                   <button>$4.99</button>
-                </div>
-                <div class="levelOne supportPackage">
-                    <h5>level two</h5>
-                   <p>level o  ne +</p>
-                   <p>behind the scenes content</p>
-                  <button>$9.99</button>
-                </div>
-                <div class="levelOne supportPackage">
-                    <h5>level three</h5>
-                   <p>level one, two +</p>
-                   <p>1 hour zoom Q/A</p>
-                   <button>$19.99</button>
-                </div>
-               
+<div class="supportContainer">
+    {{#with level.reward}}
+        <div class="levelOne supportPackage">
+            <h5>Level One: {{level.price}}</h5>
+            <p>{{level.reward}}</p>
+        </div>
+        <div class="levelTwo supportPackage">
+            <h5>Level Two: {{level.price}}</h5>
+            <p>{{level.reward}}</p>
+        </div>
+        <div class="levelThree supportPackage">
+            <h5>Level Three: {{level.price}}</h5>
+            <p>{{level.reward}}</p>
+        </div>
+    {{/with}}
+</div>
             </div>
         </aside>
-
-
     </div>
-    <div class="bottomContainer">
-
-
-        <div class="reviewContainer">
-            <h2>Leave Review</h2>
-            <input class="reviewBox" type="text" placeholder="lorem ipsum ">
-        </div>
-    </div>
-
     <script src="/assets/js/game.js"></script>
 </body>
 

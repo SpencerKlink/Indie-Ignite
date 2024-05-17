@@ -28,7 +28,7 @@ Genre.hasMany(Game, {
     });
 
 Game.hasMany(Level, {
-    foreignKey: '_id',
+    foreignKey: 'level_id',
     onDelete: 'CASCADE',
     });
 

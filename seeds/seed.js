@@ -1,10 +1,11 @@
 const sequelize = require('../config/config.js');
-const { User, Game, Genre } = require('../models');
+const { User, Game, Genre, Level } = require('../models');
 
 // Import seed data from JSON file
 const userData = require('./userSeedData.json');
 const gameData = require('./gameSeedData.json');
 const genreData = require('./genreSeedData.json');
+const levelData = require('./levelSeedData.json')
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -16,6 +17,8 @@ const seedDatabase = async () => {
   });
  
   await Game.bulkCreate(gameData);
+
+  await Level.bulkCreate(levelData);
  
 
   process.exit(0);
