@@ -1,15 +1,18 @@
+Gamepage
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/gamePage.css">
     <title>{{game.title}}</title>
 </head>
+
 <body>
     <div class="pageContainer">
         <aside class="sidebarLeft">
-            <div class="aboutMe" >
+            <div class="aboutMe">
                 <a href="/profile/{{game.user.id}}">{{game.user.username}}</a>
                 <h5>About Me:</h5>
                 <p> {{game.user.about_me}}
@@ -17,35 +20,20 @@
             </div>
             <div class="otherGamesContainer">
                 <h5 class="otherGames">Other Games:</h5>
-                <p>lorem ipsum</p>
-                <p>lorem ipsum</p>
-                <p>lorem ipsum</p>
-                <p>lorem ipsum</p>
-                <p>lorem ipsum</p>
-                <p>lorem ipsum</p>
-                <p>lorem ipsum</p>
-                <p>lorem ipsum</p>
-                <p>lorem ipsum</p>
-                <p>lorem ipsum</p>
-                <p>lorem ipsum</p>
-                <p>lorem ipsum</p>
+                {{#each otherGames}}
+                <p><a href="/game/{{this.id}}">{{this.title}}</a></p>
+                {{/each}}
             </div>
         </aside>
         <div class="displayContainer">
             <h1 class="gameTitle">{{game.title}}</h1>
             <div class="featuredImageContainer">
-                <img class="featuredImage"
-                    src="{{game.image}}"
-                    alt="{{game.title}}">
+                <img class="featuredImage" src="{{game.image}}" alt="{{game.title}}">
             </div>
             <button class="slide prev"><i class="icon">prev</i></button>
             <div class="smallImageContainer">
-                <img class="smallImage"
-                    src="{{game.image}}"
-                    alt="{{game.title}}">
-                {{!-- <img class="smallImage"
-                    src="/assets/images/stock-vector-vector-illustration-neon-future-game-pad-background-1861318969.jpg"
-                    alt="">
+                <img class="smallImage" src="{{game.image}}" alt="{{game.title}}">
+                <img class="smallImage" src="{{game.image}}" alt="{{game.title}}">
                 <img class="smallImage"
                     src="/assets/images/stock-vector-vector-illustration-neon-future-game-pad-background-1861318969.jpg"
                     alt="">
@@ -69,31 +57,39 @@
                     alt="">
                 <img class="smallImage"
                     src="/assets/images/stock-vector-vector-illustration-neon-future-game-pad-background-1861318969.jpg"
-                    alt=""> --}}
+                    alt="">
             </div>
             <button class="slide next"> <i class="icon">next</i></button>
-        <div class="descriptionContainer">
-            <h2> "{{game.title}}" Description</h2>
-            <p>{{game.description}}</p>
+            <div class="descriptionContainer">
+                <h2> "{{game.title}}" Description</h2>
+                <p>{{game.description}}</p>
                 <h3>Other Game Info</h3>
                 <p>Other Game info goes here</p>
                 <h3>Minumum Specs Required</h3>
                 <p>specs goes here</p>
-        </div>
+            </div>
         </div>
         <aside class="sidebarRight">
             <h2 class="supportHeader">Support This Game!</h2>
             <h6>(Support Packages Available for Purchase Soon!)</h5>
-            <div class="supportContainer">
-<div class="supportContainer">
-    {{#each game.levels}}
-        <div class="supportPackage">
-            <h5>Level {{this.level}}: {{this.price}}</h5>
-            <p>{{this.reward}}</p>
-        </div>
-    {{/each}}
-</div>
-            </div>
+                <div class="supportContainer">
+                    <div class="supportContainer">
+                        {{#with level.reward}}
+                        <div class="levelOne supportPackage">
+                            <h5>Level One: {{level.price}}</h5>
+                            <p>{{level.reward}}</p>
+                        </div>
+                        <div class="levelTwo supportPackage">
+                            <h5>Level Two: {{level.price}}</h5>
+                            <p>{{level.reward}}</p>
+                        </div>
+                        <div class="levelThree supportPackage">
+                            <h5>Level Three: {{level.price}}</h5>
+                            <p>{{level.reward}}</p>
+                        </div>
+                        {{/with}}
+                    </div>
+                </div>
         </aside>
     </div>
     <script src="/assets/js/game.js"></script>

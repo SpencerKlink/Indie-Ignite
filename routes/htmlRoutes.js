@@ -4,6 +4,7 @@ const path = require('path');
 const { Game, User, Level } = require('../models');
 const router = express.Router();
 const withAuth = require('../config/middleware/auth');
+const { Op } = require('sequelize');
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -21,7 +22,7 @@ router.get('/', async (req, res) => {
     try {
         const gameData = await Game.findAll();
         const games = gameData.map(game => game.get({ plain: true }));
-        res.render('home', { games });
+        res.render('home', { games, logged_In: req.session.logged_In });
     } catch (error) {
         console.error('Error getting games:', error);
         res.status(500).json({ message: 'Failed to get games', error });
@@ -29,7 +30,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    if (req.session.logged_in) {
+    if (req.session.logged_In) {
         res.redirect('/');
         return;
     }
@@ -52,8 +53,15 @@ router.get('/game/:id', async (req, res) => {
             res.status(404).send('Game not found');
             return;
         }
+
+        const otherGames = await Game.findAll({
+            where: { user_id: game.user_id, id: { [Op.ne]: game.id } }
+        });
+        console.log(otherGames);
+
         const gameData = game.get({ plain: true });
-        res.render('gamePage', { game: gameData });
+        const otherGamesData = otherGames.map(game => game.get({ plain: true }));
+        res.render('gamePage', { game: gameData, otherGames: otherGamesData });
     } catch (error) {
         console.error('Error getting game:', error);
         res.status(500).json({ message: 'Failed to get game', error });
@@ -61,7 +69,7 @@ router.get('/game/:id', async (req, res) => {
 });
 
 // Route for the current user's profile
-router.get('/profile', async (req, res) => {
+router.get('/profile',withAuth, async (req, res) => {
     try {
         const user = await User.findOne({
             where: { id: req.session.userId },
@@ -70,7 +78,7 @@ router.get('/profile', async (req, res) => {
             res.status(404).send('User not found');
             return;
         }
-        res.render('profile', { user: user.get({ plain: true }) });
+        res.render('profile', { user: user.get({ plain: true }), logged_in: req.session.logged_In});
     } catch (error) {
         console.error('Error accessing user profile:', error);
         res.status(500).send('Error accessing profile');

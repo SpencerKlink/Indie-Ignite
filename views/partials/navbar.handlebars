@@ -36,12 +36,17 @@
                         </li>
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
+                {{#if logged_In}}
+                  </li class="nav-item">
+                <a href="/api/users/logout" id="logoutButton" class="nav-link active">Logout</a>
+                </li>
+                {{else}}    
                 <li class="nav-item">
+                
                     <a class="nav-link active" id="loginButton" aria-current="page" href="/login">Login</a>
                 </li>
-                </li class="nav-item">
-                <a href="#" id="logoutButton" class="nav-link active">Logout</a>
-                </li>
+                {{/if}}
+              
 
             </ul>
             <form class="d-flex">

@@ -19,6 +19,7 @@ User.init(
         username: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
         },
         about_me: {
             type: DataTypes.STRING(500),
