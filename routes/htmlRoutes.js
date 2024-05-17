@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const { Game, User } = require('../models');
+const { Game, User, Level } = require('../models');
 const router = express.Router();
 const withAuth = require('../config/middleware/auth');
 
@@ -28,7 +28,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
         res.redirect('/');
@@ -42,17 +41,18 @@ router.get('/upload', (req, res) => {
 });
 
 router.get('/game/:id', async (req, res) => {
-    console.log('game route hit');
     try {
         const game = await Game.findByPk(req.params.id, {
-            include: [{ model: User, as: 'user' }]
+            include: [
+                { model: User, as: 'user' },
+                { model: Level }
+            ]
         });
         if (!game) {
             res.status(404).send('Game not found');
             return;
         }
         const gameData = game.get({ plain: true });
-        console.log(gameData);
         res.render('gamePage', { game: gameData });
     } catch (error) {
         console.error('Error getting game:', error);
@@ -114,7 +114,6 @@ router.get('/gamepage', async (req, res) => {
 
 router.get('/profileEdit', (req, res) => {
     res.render('profileEdit');
-
 });
 
 router.post('/api/profile/update/:userId', upload.single('profileImage'), async (req, res) => {
@@ -135,27 +134,4 @@ router.post('/api/profile/update/:userId', upload.single('profileImage'), async 
     }
 });
 
-// // POST route to handle game upload
-// router.post('/api/games/upload', upload.array('gameImages', 5), async (req, res) => {
-//     try {
-//         const { title, releaseDate, description, supporterPackages } = req.body;
-//         const images = req.files.map(file => file.path);
-//         const game = await Game.create({
-//             title,
-//             description,
-//             releaseDate,
-//             mainImage: images[0],
-//             supporterPackages 
-//         });
-//         res.redirect(`/game/${game.id}`);
-//     } catch (error) {
-//         console.error('Error uploading game:', error);
-//         res.status(500).send('Failed to upload game');
-//     }
-// });
-
-// router.get('*', (req, res) => {
-//     res.status(404).render('404page');  
-// });
-
-module.exports = router;
+module.exports = { router, upload };
