@@ -26,10 +26,18 @@ Game.init(
                 model: 'user',
                 key: 'id'
             }
-        },genre_id: {
+        },
+        genre_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'genre',
+                key: 'id'
+            }
+        },
+        level_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'level',
                 key: 'id'
             }
         },
