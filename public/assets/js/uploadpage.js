@@ -14,6 +14,12 @@ function checkWidth() {
     } else {
         document.querySelector('.container').appendChild(supporterPackages);
     }
+
+    if (window.innerWidth > 1200) {
+        mainContentContainer.appendChild(supporterPackages);
+    } else {
+        document.querySelector('.container').appendChild(supporterPackages);
+    }
 }
 
 window.addEventListener('resize', checkWidth);

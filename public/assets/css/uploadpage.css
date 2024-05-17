@@ -60,13 +60,13 @@ h1{
         min-height: 100px;
     }
     .supporter-packages {
-
         width: 90%;
-
+       
+        
     }
     .upload-section {
 
-        width: 90%;
+        width: 90%;    
     }
 }
 @media (max-width: 576px) {
