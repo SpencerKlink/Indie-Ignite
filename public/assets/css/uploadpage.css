@@ -60,7 +60,6 @@ h1{
         min-height: 100px;
     }
     .supporter-packages {
-
         width: 90%;
        
         
@@ -81,6 +80,6 @@ h1{
 
 .content-container,
 .supporter-packages {
-    
+
     margin: 0 auto;
 }

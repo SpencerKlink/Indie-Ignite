@@ -1,4 +1,6 @@
-console.log('Logout button:', logoutButton);
+var logoutButton = document.getElementById('logoutButton');
+var loginButton = document.getElementById('loginButton');
+
 if (logoutButton) {
     logoutButton.addEventListener('click', function(event) {
         event.preventDefault();
@@ -17,4 +19,6 @@ if (logoutButton) {
         }).catch(error => console.error('Error logging out:', error));
     });
 }
+
+
 
