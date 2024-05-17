@@ -8,9 +8,12 @@ body {
     background-repeat: no-repeat;
     height: 100vh;
     position: relative;
-    color:rgb(239, 225, 252)
+    color:rgb(239, 225, 252);
+    overflow-x: hidden;
 }
-
+.container{
+    padding-top: 50px;
+}
 .content-container {
     display: flex;
     justify-content: space-around;
@@ -33,7 +36,9 @@ body {
     margin-top: 30px;
 }
 
-
+::-webkit-scrollbar {
+    display: none;
+}
 
 h1{
 
@@ -50,18 +55,28 @@ h1{
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, height 0.5s ease-in-out;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     #drop_zone {
         min-height: 100px;
     }
-}
+    .supporter-packages {
 
+        width: 90%;
+       
+        
+    }
+    .upload-section {
+
+        width: 90%;    
+    }
+}
 @media (max-width: 576px) {
     #drop_zone {
         min-height: 80px;
         min-width: 40px;
     }
 }
+
 
 
 .content-container,
