@@ -22,6 +22,7 @@ body {
     border-radius: 5px;
     padding: 20px;
     width: 45%;
+    margin: 0;
 }
 #drop_zone {
     border: 2px dashed rgb(106, 24, 145);
@@ -53,6 +54,14 @@ h1{
 @media (max-width: 768px) {
     #drop_zone {
         min-height: 100px;
+    }
+    .supporter-packages {
+       
+        width: 90%;
+    }
+    .upload-section {
+      
+        width: 90%;
     }
 }
 
