@@ -86,20 +86,12 @@
             <h6>(Support Packages Available for Purchase Soon!)</h5>
             <div class="supportContainer">
 <div class="supportContainer">
-    {{#with level.reward}}
-        <div class="levelOne supportPackage">
-            <h5>Level One: {{level.price}}</h5>
-            <p>{{level.reward}}</p>
+    {{#each game.levels}}
+        <div class="supportPackage">
+            <h5>Level {{this.level}}: {{this.price}}</h5>
+            <p>{{this.reward}}</p>
         </div>
-        <div class="levelTwo supportPackage">
-            <h5>Level Two: {{level.price}}</h5>
-            <p>{{level.reward}}</p>
-        </div>
-        <div class="levelThree supportPackage">
-            <h5>Level Three: {{level.price}}</h5>
-            <p>{{level.reward}}</p>
-        </div>
-    {{/with}}
+    {{/each}}
 </div>
             </div>
         </aside>

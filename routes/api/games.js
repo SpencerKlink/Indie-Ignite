@@ -1,12 +1,78 @@
 const express = require('express');
 const router = express.Router();
-const { Game } = require('../../models');
-const publicGameRoutes = require('./publicGameRoutes');  
-const adminGameRoutes = require('./adminGameRoutes');  
-const { findAll } = require('../../models/Game');
-const app = express('express');
+const { Game, Level } = require('../../models');
+const multer = require('multer');
+const path = require('path');
 
-// GET route to retrieve all games
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './public/uploads/');
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        if (file.fieldname === 'mainImage' || file.fieldname === 'gameImages') {
+            cb(null, true);
+        } else {
+            cb(new multer.MulterError('LIMIT_UNEXPECTED_FILE', file.fieldname));
+        }
+    }
+});
+
+const cpUpload = upload.fields([{ name: 'mainImage', maxCount: 1 }, { name: 'gameImages', maxCount: 5 }]);
+
+router.post('/', cpUpload, async (req, res) => {
+    try {
+        const mainImagePath = req.files.mainImage ? req.files.mainImage[0].path : null;
+        const newGame = await Game.create({
+            title: req.body['game-title'],
+            description: req.body['game-description'],
+            releaseDate: req.body['release-date'],
+            user_id: req.session.userId,
+            image: mainImagePath,
+        });
+        if (req.body.supporterPackages) {
+            for (const pkg of req.body.supporterPackages) {
+                await Level.create({
+                    level: pkg.level,
+                    reward: pkg.details,
+                    price: pkg.price,
+                    gameId: newGame.id
+                });
+            }
+        }
+        res.redirect(`/game/${newGame.id}`);
+    } catch (error) {
+        console.error('Error creating game:', error);
+        res.status(500).json({ message: 'Failed to create game', error });
+    }
+});
+
+router.get('/:id', async (req, res) => {
+    try {
+        const game = await Game.findByPk(req.params.id, {
+            include: [
+                { model: User, as: 'user' },
+                { model: Level }
+            ]
+        });
+        if (!game) {
+            res.status(404).send('Game not found');
+            return;
+        }
+        const gameData = game.get({ plain: true });
+        res.render('gamePage', { game: gameData });
+    } catch (error) {
+        console.error('Error getting game:', error);
+        res.status(500).json({ message: 'Failed to get game', error });
+    }
+});
+
 router.get('/', async (req, res) => {
     try {
         const games = await Game.findAll();
@@ -16,7 +82,7 @@ router.get('/', async (req, res) => {
         res.status(500).json({ message: 'Failed to get games', error });
     }
 });
-// route for retriving games soecific to the user
+
 router.get('/user/:userId', async (req, res) => {
     try {
         const games = await Game.findAll({ where: { user_id: req.params.userId } });
@@ -26,22 +92,12 @@ router.get('/user/:userId', async (req, res) => {
         res.status(500).json({ message: 'Failed to get user games', error });
     }
 });
-// post route for adding games to the database
-router.post('/', async (req, res) => {
-    try {
-        const newGame = await Game.create(req.body);
-        res.status(201).json(newGame);
-    } catch (error) {
-        console.error('Error creating game:', error);
-        res.status(500).json({ message: 'Failed to create game', error });
-    }
-});
-// updates games by id
+
 router.put('/:id', async (req, res) => {
     try {
         const updatedGame = await Game.update(req.body, {
             where: { id: req.params.id }
-        })
+        });
         if (updatedGame[0] === 0) {
             res.status(404).json({ message: 'Game not found' });
         } else {
@@ -52,7 +108,7 @@ router.put('/:id', async (req, res) => {
         res.status(500).json({ message: 'Failed to update game', error });
     }
 });
-// deletes games by id
+
 router.delete('/:id', async (req, res) => {
     try {
         const result = await Game.destroy({
@@ -68,16 +124,12 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ message: 'Failed to delete game', error });
     }
 });
+
 router.get('/games', async (req, res) => {
     try {
-    // Search the database for a dish with an id that matches params
-    const gameData = await findAll();
-    // console.log(dishData) // unserialized
-    // We use .get({ plain: true }) on the object to serialize it so that it only includes the data that we need. 
-    const game= gameData.get({ plain: true });
-    console.log({serializedData: game})
-    // Then, the 'dish' template is rendered and dish is passed into the template.
-    res.render('games', game);
+        const gameData = await findAll();
+        const game = gameData.get({ plain: true });
+        res.render('games', game);
     } catch (err) {
         res.status(500).json(err);
     }

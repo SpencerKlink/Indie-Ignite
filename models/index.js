@@ -7,34 +7,32 @@ const Level = require('./Level');
 User.hasMany(Game, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
-    });
+});
 
 Game.belongsTo(User, {
     foreignKey: 'user_id'
-    });
+});
 
 Game.hasMany(Review, {
     foreignKey: 'game_id',
     onDelete: 'CASCADE'
-    });
-    
+});
+
 Game.belongsTo(Genre, {
-        foreignKey: 'genre_id',
-    });
-    
+    foreignKey: 'genre_id',
+});
+
 Genre.hasMany(Game, {
     foreignKey: 'genre_id',
     onDelete: 'CASCADE',
-    });
+});
 
 Game.hasMany(Level, {
-    foreignKey: 'level_id',
-    onDelete: 'CASCADE',
-    });
-
-Level.belongsTo(Game,{
     foreignKey: 'game_id',
-    onDelete: 'CASCADE',
-    });
+});
 
-module.exports = { Game, User, Review, Genre };
+Level.belongsTo(Game, {
+    foreignKey: 'game_id',
+});
+
+module.exports = { Game, User, Review, Genre, Level };

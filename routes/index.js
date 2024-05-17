@@ -1,14 +1,11 @@
-// Main route file that imports all other route modules
 const express = require('express');
 const router = express.Router();
 
-const htmlRoutes = require('./htmlRoutes');
+const { router: htmlRouter } = require('./htmlRoutes'); 
 const apiRoutes = require('./api'); 
 
-// Use the specific routers
-router.use('/', htmlRoutes);  
+// Use the specific routers  
+router.use('/', htmlRouter);  
 router.use('/api', apiRoutes);
-
-
 
 module.exports = router;
