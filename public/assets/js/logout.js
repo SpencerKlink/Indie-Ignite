@@ -1,6 +1,6 @@
 var logoutButton = document.getElementById('logoutButton');
 var loginButton = document.getElementById('loginButton');
-
+console.log(logoutButton);
 if (logoutButton) {
     logoutButton.addEventListener('click', function(event) {
         event.preventDefault();
