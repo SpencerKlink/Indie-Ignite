@@ -33,20 +33,20 @@
                         <label for="game-description" class="form-label">Game Description</label>
                         <textarea class="form-control" id="game-description" name="game-description" placeholder="Game Description" required></textarea>
                     </div>
-                    <div id="drop_zone" class="border p-3 mb-3 d-none d-lg-flex" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+                    {{!-- <div id="drop_zone" class="border p-3 mb-3 d-none d-lg-flex" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
                         
                         <p> STRETCH GOAL: Drag or drop photos or video here.</p>
-                    </div>
-                    <div class="mb-3">
+                    </div> --}}
+                    {{!-- <div class="mb-3">
                         <label for="formFile" class="form-label">Or upload a file from your computer</label>
                         <input class="form-control form-control-sm" id="formFile" name="gameImages" type="file">
-                    </div>
+                    </div> --}}
                     <div class="mb-3">
                         <label for="formFileMain" class="form-label">Select main photo</label>
                         <input class="form-control form-control-sm" id="formFileMain" name="mainImage" type="file">
                     </div>
-                   <div id="supporter-packages" class="supporter-packages mt-4">
-    <h3>Create Supporters Packages</h3>
+                   {{!-- <div id="supporter-packages" class="supporter-packages mt-4"> --}}
+    {{!-- <h3>Create Supporters Packages</h3>
     <!-- Level One -->
     <div id="p1" class="mb-3">
         <h5>Level One</h5>
@@ -68,7 +68,7 @@
         <input type="text" name="levels[2].price" class="form-control mb-2" placeholder="Enter a price for Level Three">
         <textarea name="levels[2].details" class="form-control mb-2" placeholder="Describe what is included in Level Three"></textarea>
     </div>
-</div>
+</div> --}}
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
