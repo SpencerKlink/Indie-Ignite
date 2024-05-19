@@ -7,10 +7,10 @@ const withAuth = require('../config/middleware/auth');
 const { Op } = require('sequelize');
 
 const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, './public/uploads/'); 
+    destination: function (req, file, cb) {
+        cb(null, './public/uploads/');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
 });
@@ -34,11 +34,15 @@ router.get('/login', (req, res) => {
         res.redirect('/');
         return;
     }
-    res.render('login', { layout: false });
+    res.render('login', { layout: false, logged_In: req.session.logged_In });
 });
 
 router.get('/upload', (req, res) => {
-    res.render('upload');
+    if (!req.session.logged_In) {
+        res.redirect('/login');
+        return;
+    }
+    res.render('upload', { logged_In: req.session.logged_In });
 });
 
 router.get('/game/:id', async (req, res) => {
@@ -46,7 +50,7 @@ router.get('/game/:id', async (req, res) => {
         const game = await Game.findByPk(req.params.id, {
             include: [
                 { model: User, as: 'user' },
-                { model: Level }
+                { model: Level, as: 'levels' }
             ]
         });
         if (!game) {
@@ -57,11 +61,13 @@ router.get('/game/:id', async (req, res) => {
         const otherGames = await Game.findAll({
             where: { user_id: game.user_id, id: { [Op.ne]: game.id } }
         });
+
         console.log(otherGames);
 
         const gameData = game.get({ plain: true });
+        gameData.levels = gameData.levels.map(level => ({ ...level, price: parseFloat(level.price).toFixed(2) }));
         const otherGamesData = otherGames.map(game => game.get({ plain: true }));
-        res.render('gamePage', { game: gameData, otherGames: otherGamesData });
+        res.render('gamePage', { game: gameData, otherGames: otherGamesData, logged_In: req.session.logged_In});
     } catch (error) {
         console.error('Error getting game:', error);
         res.status(500).json({ message: 'Failed to get game', error });
@@ -69,16 +75,23 @@ router.get('/game/:id', async (req, res) => {
 });
 
 // Route for the current user's profile
-router.get('/profile',withAuth, async (req, res) => {
+router.get('/profile', withAuth, async (req, res) => {
     try {
         const user = await User.findOne({
             where: { id: req.session.userId },
+            include: [{ model: Game, as: 'games' }]
         });
         if (!user) {
             res.status(404).send('User not found');
             return;
         }
-        res.render('profile', { user: user.get({ plain: true }), logged_in: req.session.logged_In});
+        const userData = user.get({ plain: true });
+        const gamesData = userData.games.map(game => game);
+        res.render('profile', { 
+            user: userData, 
+            games: gamesData, 
+            logged_In: req.session.logged_In 
+        });
     } catch (error) {
         console.error('Error accessing user profile:', error);
         res.status(500).send('Error accessing profile');
@@ -90,12 +103,14 @@ router.get('/profile/:id', async (req, res) => {
     try {
         const user = await User.findOne({
             where: { id: req.params.id },
+            include: [{ model: Game, as: 'games' }]
         });
         if (!user) {
             res.status(404).send('User not found');
             return;
         }
-        res.render('profile', { user: user.get({ plain: true }) });
+        const userData = user.get({ plain: true });
+        res.render('profile', { user: userData, games: userData.games, logged_In: req.session.logged_In});
     } catch (error) {
         console.error('Error accessing user profile:', error);
         res.status(500).send('Error accessing profile');
@@ -103,7 +118,7 @@ router.get('/profile/:id', async (req, res) => {
 });
 
 router.get('/gamepage', async (req, res) => {
-    const gameId = req.query.id; // Get the game's ID from the query parameter
+    const gameId = req.query.id;
     try {
         const user = await User.findOne({
             // where: { id: req.session.userId },
@@ -121,9 +136,9 @@ router.get('/gamepage', async (req, res) => {
 });
 
 router.get('/profileEdit', (req, res) => {
-    res.render('profileEdit');
+    res.render('profileEdit', { logged_In: req.session.logged_In });
 });
-
+// html routes are only for rendering the page
 router.post('/api/profile/update/:userId', upload.single('profileImage'), async (req, res) => {
     try {
         const user = await User.findByPk(req.params.userId);

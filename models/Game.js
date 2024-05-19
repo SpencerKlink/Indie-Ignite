@@ -43,7 +43,8 @@ Game.init(
         },
         image: {
             type: DataTypes.STRING(1000),
-            allowNull: true
+            allowNull: true,
+            defaultValue: 'https://mail.google.com/mail/u/0/#inbox?projector=1'
         },
         trailer: {
             type: DataTypes.STRING,

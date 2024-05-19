@@ -44,27 +44,30 @@
                         <label for="formFileMain" class="form-label">Select main photo</label>
                         <input class="form-control form-control-sm" id="formFileMain" name="mainImage" type="file">
                     </div>
-                    <div id="supporter-packages" class="supporter-packages mt-4">
-                        <h3>Create Supporters Packages</h3>
-                        <!-- Level One -->
-                        <div id="p1" class="mb-3">
-                            <h5>Level One</h5>
-                            <input type="text" name="supporterPackages[0].price" class="form-control mb-2" placeholder="Enter a price for Level One">
-                            <textarea name="supporterPackages[0].details" class="form-control mb-2" placeholder="Describe what is included in Level One"></textarea>
-                        </div>
-                        <!-- Level Two -->
-                        <div id="p2" class="mb-3">
-                            <h5>Level Two</h5>
-                            <input type="text" name="supporterPackages[1].price" class="form-control mb-2" placeholder="Enter a price for Level Two">
-                            <textarea name="supporterPackages[1].details" class="form-control mb-2" placeholder="Describe what is included in Level Two"></textarea>
-                        </div>
-                        <!-- Level Three -->
-                        <div id="p3" class="mb-3">
-                            <h5>Level Three</h5>
-                            <input type="text" name="supporterPackages[2].price" class="form-control mb-2" placeholder="Enter a price for Level Three">
-                            <textarea name="supporterPackages[2].details" class="form-control mb-2" placeholder="Describe what is included in Level Three"></textarea>
-                        </div>
-                    </div>
+                   <div id="supporter-packages" class="supporter-packages mt-4">
+    <h3>Create Supporters Packages</h3>
+    <!-- Level One -->
+    <div id="p1" class="mb-3">
+        <h5>Level One</h5>
+        <input type="number" name="levels[0].level_number" class="form-control mb-2" placeholder="Enter the level number for Level One">
+        <input type="text" name="levels[0].price" class="form-control mb-2" placeholder="Enter a price for Level One">
+        <textarea name="levels[0].details" class="form-control mb-2" placeholder="Describe what is included in Level One"></textarea>
+    </div>
+    <!-- Level Two -->
+    <div id="p2" class="mb-3">
+        <h5>Level Two</h5>
+        <input type="number" name="levels[1].level_number" class="form-control mb-2" placeholder="Enter the level number for Level Two">
+        <input type="text" name="levels[1].price" class="form-control mb-2" placeholder="Enter a price for Level Two">
+        <textarea name="levels[1].details" class="form-control mb-2" placeholder="Describe what is included in Level Two"></textarea>
+    </div>
+    <!-- Level Three -->
+    <div id="p3" class="mb-3">
+        <h5>Level Three</h5>
+        <input type="number" name="levels[2].level_number" class="form-control mb-2" placeholder="Enter the level number for Level Three">
+        <input type="text" name="levels[2].price" class="form-control mb-2" placeholder="Enter a price for Level Three">
+        <textarea name="levels[2].details" class="form-control mb-2" placeholder="Describe what is included in Level Three"></textarea>
+    </div>
+</div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
