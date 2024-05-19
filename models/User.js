@@ -19,9 +19,11 @@ User.init(
         username: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
         },
         about_me: {
             type: DataTypes.STRING(500),
+            defaultValue: 'I am a new user!',
             allowNull: true,
         },
         email: {
@@ -50,6 +52,7 @@ User.init(
         profile_picture: {
             type: DataTypes.STRING,
             allowNull: true,
+            defaultValue: 'https://thumbs.dreamstime.com/b/iconic-image-social-networks-anonymous-very-personal-character-profile-over-bright-violet-background-148178936.jpg',
         },
     },
     {

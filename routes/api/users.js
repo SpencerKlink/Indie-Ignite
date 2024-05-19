@@ -32,7 +32,7 @@ router.post('/signup',preventDuplicateSession, async (req, res) => {
         req.session.save(() => {
             req.session.userId = newUser.id;
             req.session.username = newUser.username;
-            req.session.loggedIn = true;
+            req.session.logged_In = true;
 
             res.status(201).json(newUser);
         });
@@ -63,7 +63,7 @@ router.post('/login',preventDuplicateSession, async (req, res) => {
             req.session.userId = user.id;
             req.session.username = user.username;
             req.session.userRole = user.userRole;
-            req.session.loggedIn = true;
+            req.session.logged_In = true;
 
             res.json({ user: user, message: 'You are now logged in!' });
         });
@@ -74,16 +74,39 @@ router.post('/login',preventDuplicateSession, async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.logged_In) {
         req.session.destroy(err => {
             if (err) {
                 res.status(500).json({ message: 'Could not log out, please try again' });
             } else {
-                res.status(204).send();
+                res.redirect('/login');
             }
         });
     } else {
         res.status(404).send('Not logged in');
+    }
+});
+
+
+
+router.put('/profile/:id', async (req, res) => {
+    try {
+        const userData = await User.update(req.body, {
+            individualHooks: true,
+            where: {
+                id: req.params.id
+            }
+        });
+
+        if (!userData[0]) {
+            res.status(404).json({ message: 'No user found with this id!' });
+            return;
+        }
+
+        res.status(200).json(userData);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
     }
 });
 
