@@ -76,12 +76,21 @@ router.get('/game/:id', async (req, res) => {
 
 router.get('/profile', withAuth, async (req, res) => {
     try {
-        const user = await User.findByPk(req.session.userId);
+        const user = await User.findOne({
+            where: { id: req.session.userId },
+            include: [{ model: Game, as: 'games' }]
+        });
         if (!user) {
             res.status(404).send('User not found');
             return;
         }
-        res.render('profile', { user: user.get({ plain: true }) });
+        const userData = user.get({ plain: true });
+        const gamesData = userData.games.map(game => game);
+        res.render('profile', { 
+            user: userData, 
+            games: gamesData, 
+            logged_In: req.session.logged_In 
+        });
     } catch (error) {
         console.error('Error accessing user profile:', error);
         res.status(500).send('Error accessing profile');
@@ -111,32 +120,18 @@ router.get('/game', (req, res) => {
     res.redirect('/');
 });
 
-router.get('/gamepage', async (req, res) => {
-    const gameId = req.query.id;
-    try {
-        const user = await User.findOne({
-            // where: { id: req.session.userId },
-            // include: [Game]
-        });
-        if (!user) {
-            res.status(404).send('User not found');
-            return;
-        }
-        res.render('profile', { user: user.get({ plain: true }) });
-    } catch (error) {
-        console.error('Error accessing user profile:', error);
-        res.status(500).send('Error accessing profile');
-    }
+router.get('/gamepage', (req, res) => {
+    res.redirect('/');
 });
 
 router.get('/profileEdit', withAuth, async (req, res) => {
     try {
-        const user = await User.findByPk(req.session.userId);
+        const user = await User.findByPk(req.session.userId, { raw: true });
         if (!user) {
             res.status(404).send('User not found');
             return;
         }
-        res.render('profileEdit', { user: user.get({ plain: true }) });
+        res.render('profileEdit', { user: user, logged_In: req.session.logged_In });
     } catch (error) {
         console.error('Error accessing profile edit page:', error);
         res.status(500).send('Error accessing profile edit page');
