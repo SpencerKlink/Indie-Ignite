@@ -25,10 +25,12 @@
                     <a class="nav-link active" aria-current="page" href="/upload">Upload</a>
                 </li>
                 {{/if}}
+
                 
                
+
                 {{#if logged_In}}
-                  <li class="nav-item">
+                <li class="nav-item">
                 <a href="/api/users/logout" id="logoutButton" class="nav-link active">Logout</a>
                 </li>
                 {{else}}    

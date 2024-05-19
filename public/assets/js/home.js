@@ -1,20 +1,3 @@
-// const giantContainer = document.querySelector('.giantContainer')
-
-
-
-// giantContainer.addEventListener("click", (event) => {
-//        const item = event.target
-   
-//         if(item.matches(".next")) {
-//             item.previousElementSibling.scrollLeft += 500;
-            
-//         } else if  (item.matches('.prev')) {
-//                 item.nextElementSibling.scrollLeft -= 500;
-//         }
-           
-        
-// })
-
 const giantContainer = document.querySelector('.giantContainer')
 
 giantContainer.addEventListener("click", (event) => {
