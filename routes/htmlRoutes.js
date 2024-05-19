@@ -107,6 +107,10 @@ router.get('/profile/:id', async (req, res) => {
     }
 });
 
+router.get('/game', (req, res) => {
+    res.redirect('/');
+});
+
 router.get('/gamepage', async (req, res) => {
     const gameId = req.query.id;
     try {
