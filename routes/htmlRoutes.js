@@ -88,7 +88,6 @@ router.get('/profile', withAuth, async (req, res) => {
     }
 });
 
-
 // Route for other users' profiles
 router.get('/profile/:id', async (req, res) => {
     try {
