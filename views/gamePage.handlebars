@@ -68,23 +68,35 @@
                 <p>specs goes here</p>
             </div>
         </div>
-        <aside class="sidebarRight">
+          <aside class="sidebarRight">
+
             <h2 class="supportHeader">Support This Game!</h2>
             <h6>(Support Packages Available for Purchase Soon!)</h5>
-                <div class="supportContainer">
-                    <div class="supportContainer">
-                    <div class="supportContainer">
-    {{#each game.levels}}
-        <div class="supportPackage">
-            <h5>Level {{this.level_number}}: ${{this.price}}</h5>
-            <p>{{this.reward}}</p>
-        </div>
-    {{/each}}
-</div>
-                    </div>
+            <div class="supportContainer">
+                <div class="levelOne supportPackage">
+                    <h5>level one</h5>
+                   <p>free shirt</p>
+                   <p>early access content</p>
+                   <button>$4.99</button>
                 </div>
-
+                <div class="levelOne supportPackage">
+                    <h5>level two</h5>
+                   <p>level one +</p>
+                   <p>behind the scenes content</p>
+                  <button>$9.99</button>
+                </div>
+                <div class="levelOne supportPackage">
+                    <h5>level three</h5>
+                   <p>level one, two +</p>
+                   <p>1 hour zoom Q/A</p>
+                   <button>$19.99</button>
+                </div>
+               
+            </div>
         </aside>
+
+
+    </div>
     </div>
     <script src="/assets/js/game.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
