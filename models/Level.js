@@ -1,4 +1,4 @@
-// Game model
+// Level model
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/config');
 const Game = require('./Game');
@@ -13,7 +13,7 @@ Level.init(
             primaryKey: true,
             autoIncrement: true
         },
-        level: {
+        level_number: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
@@ -22,26 +22,25 @@ Level.init(
             allowNull: false
         },
         price: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,4),
             allowNull: false
         },
         gameId: {
             type: DataTypes.INTEGER,
             references: {
-                model: Game,
+                model: 'game',
                 key: 'id',
             },
+            allowNull: false,
         },
     },
     {
         sequelize,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
-        timestamps: false,
         modelName: 'level',
     }
 );
 
 module.exports = Level;
-
-

@@ -27,6 +27,11 @@ const upload = multer({
 const cpUpload = upload.fields([{ name: 'mainImage', maxCount: 1 }, { name: 'gameImages', maxCount: 5 }]);
 
 router.post('/', cpUpload, async (req, res) => {
+    if (!req.session.logged_In) {
+        res.status(401).json({ message: 'Unauthorized' });
+        return;
+    }
+    
     try {
         const mainImagePath = req.files.mainImage ? req.files.mainImage[0].path : null;
         const newGame = await Game.create({
@@ -36,12 +41,12 @@ router.post('/', cpUpload, async (req, res) => {
             user_id: req.session.userId,
             image: mainImagePath,
         });
-        if (req.body.supporterPackages) {
-            for (const pkg of req.body.supporterPackages) {
+        if (req.body.levels) {
+            for (const level of req.body.levels) {
                 await Level.create({
-                    level: pkg.level,
-                    reward: pkg.details,
-                    price: pkg.price,
+                    level: level['level_number'],
+                    reward: level['reward'],
+                    price: level['price'],
                     gameId: newGame.id
                 });
             }
@@ -58,7 +63,7 @@ router.get('/:id', async (req, res) => {
         const game = await Game.findByPk(req.params.id, {
             include: [
                 { model: User, as: 'user' },
-                { model: Level }
+                { model: Level,as: 'level' }
             ]
         });
         if (!game) {
