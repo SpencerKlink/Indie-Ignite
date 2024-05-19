@@ -2,6 +2,7 @@
    width: 100vw;
     position: fixed; 
     z-index: 2;
+    top: 0;
 }
 .logo {
     margin-right:15px;
