@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Game, Level } = require('../../models');
+const { Game, Level, User } = require('../../models'); // Added User to the import
 const multer = require('multer');
 const path = require('path');
 
@@ -33,7 +33,7 @@ router.post('/', cpUpload, async (req, res) => {
     }
     
     try {
-        const mainImagePath = req.files.mainImage ? req.files.mainImage[0].path : null;
+        const mainImagePath = req.files.mainImage ? req.files.mainImage[0].path.replace('public', '') : null;
         const newGame = await Game.create({
             title: req.body['game-title'],
             description: req.body['game-description'],
@@ -63,7 +63,7 @@ router.get('/:id', async (req, res) => {
         const game = await Game.findByPk(req.params.id, {
             include: [
                 { model: User, as: 'user' },
-                { model: Level,as: 'level' }
+                { model: Level, as: 'levels' }
             ]
         });
         if (!game) {

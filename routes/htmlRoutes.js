@@ -74,29 +74,20 @@ router.get('/game/:id', async (req, res) => {
     }
 });
 
-// Route for the current user's profile
 router.get('/profile', withAuth, async (req, res) => {
     try {
-        const user = await User.findOne({
-            where: { id: req.session.userId },
-            include: [{ model: Game, as: 'games' }]
-        });
+        const user = await User.findByPk(req.session.userId);
         if (!user) {
             res.status(404).send('User not found');
             return;
         }
-        const userData = user.get({ plain: true });
-        const gamesData = userData.games.map(game => game);
-        res.render('profile', { 
-            user: userData, 
-            games: gamesData, 
-            logged_In: req.session.logged_In 
-        });
+        res.render('profile', { user: user.get({ plain: true }) });
     } catch (error) {
         console.error('Error accessing user profile:', error);
         res.status(500).send('Error accessing profile');
     }
 });
+
 
 // Route for other users' profiles
 router.get('/profile/:id', async (req, res) => {
@@ -135,25 +126,17 @@ router.get('/gamepage', async (req, res) => {
     }
 });
 
-router.get('/profileEdit', (req, res) => {
-    res.render('profileEdit', { logged_In: req.session.logged_In });
-});
-// html routes are only for rendering the page
-router.post('/api/profile/update/:userId', upload.single('profileImage'), async (req, res) => {
+router.get('/profileEdit', withAuth, async (req, res) => {
     try {
-        const user = await User.findByPk(req.params.userId);
+        const user = await User.findByPk(req.session.userId);
         if (!user) {
             res.status(404).send('User not found');
             return;
         }
-        if (req.file) {
-            user.profileImageUrl = '/uploads/' + req.file.filename;
-        }
-        await user.save();
-        res.redirect('/profile/' + req.params.userId);
+        res.render('profileEdit', { user: user.get({ plain: true }) });
     } catch (error) {
-        console.error('Error updating profile:', error);
-        res.status(500).send('Error updating profile: ' + error.message);
+        console.error('Error accessing profile edit page:', error);
+        res.status(500).send('Error accessing profile edit page');
     }
 });
 
