@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Game, Level, User } = require('../../models'); // Added User to the import
+const { Game, Level, User } = require('../../models');
 const multer = require('multer');
 const path = require('path');
 
@@ -47,7 +47,7 @@ router.post('/', cpUpload, async (req, res) => {
                     level: level['level_number'],
                     reward: level['reward'],
                     price: level['price'],
-                    gameId: newGame.id
+                    game_id: newGame.id
                 });
             }
         }
@@ -135,9 +135,9 @@ router.delete('/:id', async (req, res) => {
 
 router.get('/games', async (req, res) => {
     try {
-        const gameData = await findAll();
-        const game = gameData.get({ plain: true });
-        res.render('games', game);
+        const gameData = await Game.findAll();
+        const games = gameData.map(game => game.get({ plain: true }));
+        res.render('games', { games });
     } catch (err) {
         res.status(500).json(err);
     }

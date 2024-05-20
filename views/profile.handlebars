@@ -11,12 +11,11 @@
     <div class="userContainer">
         <div class="profile-image-section">
             <h1>{{user.username}}</h1>
-            <img src="{{user.profile_picture}}" alt="Profile Image of {{userName}}" class="profile-image rounded-circle img-fluid">
+            <img src="{{user.profile_picture}}" alt="Profile Image of {{user.username}}" class="profile-image rounded-circle img-fluid">
         </div>
         
-        
         <div class="textContainer">
-            <h2 >About Me!</h2>
+            <h2>About Me!</h2>
             <div class="profile-about-section">
                 <div class="description-box">
                     <p>{{user.about_me}}</p>
@@ -27,7 +26,9 @@
                 {{#each games}}
                 <div class="creation-item">
                     <a href="/game/{{this.id}}" class="text-white">{{this.title}}</a>
-                    <button class="delete-btn btn btn-danger btn-sm" data-id="{{this.id}}">Delete</button>
+                    {{#if (eq ../user.id ../loggedInUser) }}
+                        <button class="delete-btn btn btn-danger btn-sm" data-id="{{this.id}}">Delete</button>
+                    {{/if}}
                 </div>
                 {{/each}}
             </div>

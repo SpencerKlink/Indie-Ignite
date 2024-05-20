@@ -67,7 +67,7 @@ router.get('/game/:id', async (req, res) => {
         const gameData = game.get({ plain: true });
         gameData.levels = gameData.levels.map(level => ({ ...level, price: parseFloat(level.price).toFixed(2) }));
         const otherGamesData = otherGames.map(game => game.get({ plain: true }));
-        res.render('gamePage', { game: gameData, otherGames: otherGamesData, logged_In: req.session.logged_In});
+        res.render('gamePage', { game: gameData, otherGames: otherGamesData, logged_In: req.session.logged_In });
     } catch (error) {
         console.error('Error getting game:', error);
         res.status(500).json({ message: 'Failed to get game', error });
@@ -89,7 +89,8 @@ router.get('/profile', withAuth, async (req, res) => {
         res.render('profile', { 
             user: userData, 
             games: gamesData, 
-            logged_In: req.session.logged_In 
+            logged_In: req.session.logged_In,
+            loggedInUser: req.session.userId 
         });
     } catch (error) {
         console.error('Error accessing user profile:', error);
@@ -109,7 +110,7 @@ router.get('/profile/:id', async (req, res) => {
             return;
         }
         const userData = user.get({ plain: true });
-        res.render('profile', { user: userData, games: userData.games, logged_In: req.session.logged_In});
+        res.render('profile', { user: userData, games: userData.games, logged_In: req.session.logged_In, loggedInUser: req.session.userId });
     } catch (error) {
         console.error('Error accessing user profile:', error);
         res.status(500).send('Error accessing profile');
