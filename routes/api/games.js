@@ -116,14 +116,17 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const result = await Game.destroy({
+        const game = await Game.findOne({
+            where: { id: req.params.id, user_id: req.session.userId }
+        });
+        if (!game) {
+            res.status(404).json({ message: 'Game not found' });
+            return;
+        }
+        await Game.destroy({
             where: { id: req.params.id }
         });
-        if (result === 0) {
-            res.status(404).json({ message: 'Game not found' });
-        } else {
-            res.status(200).json({ message: 'Game deleted successfully' });
-        }
+        res.status(200).json({ message: 'Game deleted successfully' });
     } catch (error) {
         console.error('Error deleting game:', error);
         res.status(500).json({ message: 'Failed to delete game', error });

@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="/assets/css/profile.css">
 
-
 <div>
     <button class="editBtn">
         <a href="/profileEdit">Edit Profile</a>
@@ -28,10 +27,27 @@
                 {{#each games}}
                 <div class="creation-item">
                     <a href="/game/{{this.id}}" class="text-white">{{this.title}}</a>
+                    <button class="delete-btn btn btn-danger btn-sm" data-id="{{this.id}}">Delete</button>
                 </div>
                 {{/each}}
             </div>
         </div>
     </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', async function() {
+            const gameId = this.getAttribute('data-id');
+            const response = await fetch(`/api/games/${gameId}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                alert('Failed to delete game');
+            }
+        });
+    });
+</script>
