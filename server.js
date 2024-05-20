@@ -14,7 +14,10 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const helpers = {
-    formatNumber: (number) => number.toLocaleString()
+    formatNumber: (number) => number.toLocaleString(),
+    eq: function (a, b) {
+        return a === b;
+    }
 };
 
 const hbs = exphbs.create({
