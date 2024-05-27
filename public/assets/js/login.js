@@ -12,7 +12,8 @@ loginBtn.addEventListener('click', () => {
 });
 
 const passwordInput = document.getElementById("password-login");
-const signupInput = document.getElementById("password-signup")
+const signupInput = document.getElementById("password-signup");
+const confirmPass = document.getElementById("password-confirm");
 const showPassword = document.querySelector(".password-toggle-icon i");
 const showSignUp = document.querySelector(".sign-up-toggle-icon i");
 
@@ -27,13 +28,18 @@ showPassword.addEventListener("click", function () {
     showPassword.classList.add("fa-eye");
   }
 });
+
+
+
 showSignUp.addEventListener("click", function () {
-    if (signupInput.type === "password") {
+    if (signupInput.type === "password" && confirmPass.type === "password") {
       signupInput.type = "text";
+      confirmPass.type = "text";
       showSignUp.classList.remove("fa-eye");
       showSignUp.classList.add("fa-eye-slash");
     } else {
       signupInput.type = "password";
+      confirmPass.type = "password";
       showSignUp.classList.remove("fa-eye-slash");
       showSignUp.classList.add("fa-eye");
     }
@@ -68,7 +74,9 @@ const signupFormHandler = async (event) => {
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-
+    const confirmPass = document.querySelector('#password-confirm').value.trim();
+if(password === confirmPass) {
+   
     if (username && email && password) {
         const response = await fetch('api/users/signup', {
             method: 'POST',
@@ -82,6 +90,12 @@ const signupFormHandler = async (event) => {
             alert('Failed to sign up.');
         }
     }
+} else {
+    alert("passwords do not match");
+    console.log(password)
+    console.log(confirmPass)
+    return;
+}
 };
 
 document
