@@ -92,8 +92,6 @@ if(password === confirmPass) {
     }
 } else {
     alert("passwords do not match");
-    console.log(password)
-    console.log(confirmPass)
     return;
 }
 };
