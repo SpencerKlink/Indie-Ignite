@@ -72,15 +72,14 @@ input {
     float: right;
 }
 .card-img-top {
-    height: 201px;
-    width: 286px;
+    height: 200px;
+    width: 300px;
+    object-fit: cover;
 }
 .gamecard {
     margin:20px;
     display: flex;
     z-index: -1;
-    width: 288px;
-    height: 267px;
     text-decoration: none;
     
     
@@ -101,8 +100,10 @@ h1 {
     color: white;
 }
 
+
 .card-body {
     background:linear-gradient(rgba(131, 88, 248), rgba(30, 0, 128));
+    /* width: 300px; */
 }
 
 .card-title {
